@@ -1,0 +1,13 @@
+users:
+    admin:
+        username: admin
+        password: admin
+        email: admin@example.com
+        firstname: Gescan
+        lastname: Admin
+        owner: Main
+        catalog_locale: en_CA
+        catalog_scope: ecommerce
+        default_tree: master
+        role: ROLE_ADMINISTRATOR
+        enable: true

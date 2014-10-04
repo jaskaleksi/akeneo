@@ -1,0 +1,22 @@
+custom_entities:
+    mapping_code:
+        entity_class: GescanPim\Bundle\ConnectorBundle\Entity\MappingCode
+        actions:
+            edit:
+                form_type: gescan_connector_form_mappingcode
+            create:
+                enabled: false
+    manufacturer:
+        entity_class: GescanPim\Bundle\ConnectorBundle\Entity\Manufacturer
+        actions:
+            edit:
+                form_type: gescan_connector_form_referential
+            create:
+                form_type: gescan_connector_form_referential
+    color:
+        entity_class: GescanPim\Bundle\ConnectorBundle\Entity\Color
+        actions:
+            edit:
+                form_type: gescan_connector_form_referential
+            create:
+                form_type: gescan_connector_form_referential

@@ -1,0 +1,687 @@
+attributes:
+    ######################## general #####################################
+    sku:
+        labels:
+            en_CA: SKU
+        type:       pim_catalog_identifier
+        group:               general
+        unique:              true
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        sortOrder:           1
+    name:
+        labels:
+            en_CA: Name
+        type: pim_catalog_text
+        group: general
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        sortOrder: 2
+        scopable: true
+    url_key:
+        labels:
+            en_CA: Name
+        type: pim_catalog_text
+        group: general
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        sortOrder: 2
+        scopable: false
+    image_1:
+        labels:
+            en_CA: Main Image
+        type:  pim_catalog_image
+        group: general
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    description:
+        labels:
+            en_CA: Description
+        type:  pim_catalog_textarea
+        group: general
+        localizable:        false
+        scopable:            true
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        wysiwygEnabled:      false
+        sortOrder:           4
+    short_description:
+        labels:
+            en_CA: Short Description
+        type:  pim_catalog_textarea
+        group: general
+        localizable:        false
+        scopable:            true
+        useableAsGridColumn: true
+        useableAsGridFilter: false
+        maxCharacters:       100
+        wysiwygEnabled:      false
+        sortOrder:           5
+    manufacturer:
+        labels:
+            en_CA: Manufacturer Name
+        type: pim_catalog_text
+        group: general
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: true
+        sortOrder: 1
+######################## meta #####################################				
+    meta_title:
+        labels:
+            en_CA: Meta Title
+        type:  pim_catalog_textarea
+        group: meta
+        localizable:        false
+        scopable:            false
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        maxCharacters:       100
+        wysiwygEnabled:      false
+        sortOrder:           5
+    meta_keyword:
+        labels:
+            en_CA: Meta Keyword
+        type:  pim_catalog_textarea
+        group: meta
+        localizable:        false
+        scopable:            false
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        maxCharacters:       100
+        wysiwygEnabled:      false
+        sortOrder:           5
+    meta_description:
+        labels:
+            en_CA: Meta Description
+        type:  pim_catalog_textarea
+        group: meta
+        localizable:        false
+        scopable:            false
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        maxCharacters:       100
+        wysiwygEnabled:      false
+        sortOrder:           5
+######################## media #####################################
+    thumbnail:
+        labels:
+            en_CA: Thumnail
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         2
+        allowedExtensions: 'gif,jpeg,png'
+    small_image:
+        labels:
+            en_CA: Thumnail
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         2
+        allowedExtensions: 'gif,jpeg,png'
+    image_2:
+        labels:
+            en_CA: Image 2
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         2
+        allowedExtensions: 'gif,jpeg,png'
+    image_3:
+        labels:
+            en_CA: Image 3
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    image_4:
+        labels:
+            en_CA: Image 4
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    image_5:
+        labels:
+            en_CA: Image 5
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    image_6:
+        labels:
+            en_CA: Image 6
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    image_7:
+        labels:
+            en_CA: Image 7
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    image_8:
+        labels:
+            en_CA: Image 8
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    image_9:
+        labels:
+            en_CA: Image 9
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    image_10:
+        labels:
+            en_CA: Image 10
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         3
+        allowedExtensions: 'gif,jpeg,png'
+    youtube_link:
+        labels:
+            en_CA: Youtube Link
+        type:  pim_catalog_image
+        group: media
+        scopable:       true
+        maxFileSize:       4000
+        sortOrder:         2
+        allowedExtensions: 'gif,jpeg,png'
+    spec_sheet:
+        labels:
+            en_CA: Specification
+        type:  pim_catalog_file
+        group: media
+        maxFileSize: 2000
+        sortOrder:   4
+        scopable:       true
+        allowedExtensions: 'pdf'
+######################## identifier #####################################		
+    mpn:
+        labels:
+            en_CA: Manufacturer Product Number
+        type: pim_catalog_text
+        group: identifier
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: true
+        sortOrder: 3
+    unspsc:
+        labels:
+            en_CA: UNSPSC
+        type: pim_catalog_text
+        group: identifier
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: true
+        sortOrder: 9
+    channelId:
+        labels:
+            en_CA: Channel Id
+        type:       pim_catalog_text
+        group:               identifier
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: true
+        sortOrder:           7 
+    upc:
+        labels:
+            en_CA: upc
+        type:       pim_catalog_text
+        group:               identifier
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: true
+        sortOrder:           2
+######################## technical #####################################
+    warranty:
+        labels:
+            en_CA: Warranty
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    amperage:
+        labels:
+            en_CA: Amperage
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    application:
+        labels:
+            en_CA: Application(how its used)
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    bit_shank:
+        labels:
+            en_CA: Shank
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    bit_step_size:
+        labels:
+            en_CA: Step Size
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    bit_type:
+        labels:
+            en_CA: Bit Type
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    bulb_shape:
+        labels:
+            en_CA: Bulb Shape
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    case_quantity:
+        labels:
+            en_CA: Case Quantity
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    certification:
+        labels:
+            en_CA: Certifications
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    color:
+        labels:
+            en_CA: Color
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    conductor_count:
+        labels:
+            en_CA: Conductor Count
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    dimension_diameter:
+        labels:
+            en_CA: Diameter
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    dimension_height:
+        labels:
+            en_CA: Height
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    dimension_length:
+        labels:
+            en_CA: Length
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    dimension_volume:
+        labels:
+            en_CA: Volume
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    dimension_width:
+        labels:
+            en_CA: Width
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    enclosure:
+        labels:
+            en_CA: Enclosure
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    gangs:
+        labels:
+            en_CA: Gangs
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    guage:
+        labels:
+            en_CA: Guage
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    installation:
+        labels:
+            en_CA: Installation
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    insulation:
+        labels:
+            en_CA: Insulation
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    jacket:
+        labels:
+            en_CA: Jacket
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    lamp_approx_lumens:
+        labels:
+            en_CA: Approximate Lumens
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    lamp_base:
+        labels:
+            en_CA: Base
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    lamp_cri:
+        labels:
+            en_CA: CRI
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    lamp_mbcp:
+        labels:
+            en_CA: MBCP
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    lamp_mol:
+        labels:
+            en_CA: MOL (Max Overall Length)
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    lamp_rated_average_life:
+        labels:
+            en_CA: Rated Average Life (Hours)
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    lamp_temperature:
+        labels:
+            en_CA: Temperature (in K)
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    material:
+        labels:
+            en_CA: Material
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    package_length:
+        labels:
+            en_CA: Length
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    pin_test:
+        labels:
+            en_CA: PIN Test
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    sizing:
+        labels:
+            en_CA: Sizing
+        type: pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    special_features:
+        labels:
+            en_CA: Special Features
+        type:  pim_catalog_text
+        wysiwygEnabled:      false
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    voltage:
+        labels:
+            en_CA: Voltage
+        type:  pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+    wattage:
+        labels:
+            en_CA: Wattage
+        type:  pim_catalog_text
+        group: technical
+        useableAsGridColumn: false
+        useableAsGridFilter: false
+        scopable: true
+######################## scoring #####################################    
+    score_attributs:
+        labels:
+            en_CA: Attributs Number
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 10
+        defaultValue: 1
+    score_category:
+        labels:
+            en_CA: Categorisation
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 5
+        defaultValue: 5
+    score_description:
+        labels:
+            en_CA: Description Length
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 15
+        defaultValue: 5
+    score_images:
+        labels:
+            en_CA: Images Size
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 25
+        defaultValue: 5
+    score_specification:
+        labels:
+            en_CA: Specification defined
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 5
+        defaultValue: 5
+    score_title:
+        labels:
+            en_CA: Title verified
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 10
+        defaultValue: 10
+    score_upc:
+        labels:
+            en_CA: UPC defined
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 2
+        defaultValue: 2
+    score_video:
+        labels:
+            en_CA: Video defined
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 5
+        defaultValue: 5
+    score_precentage:
+        labels:
+            en_CA: Global %
+        type:  pim_catalog_number
+        group: score
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+        decimalsAllowed: true
+        negativeAllowed: false
+        numberMin: 0
+        numberMax: 100
+        defaultValue: 0
+######################## promotions ##################################### 
+    promotion_start:
+        labels:
+            en_CA: Promotion Start Date
+        type:  pim_catalog_date
+        group: promotion
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false
+    promotion_end:
+        labels:
+            en_CA: Promotion End Date
+        type:  pim_catalog_date
+        group: promotion
+        useableAsGridColumn: true
+        useableAsGridFilter: true
+        scopable: false

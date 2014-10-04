@@ -1,0 +1,939 @@
+categories:
+    master:
+        labels:
+            en_CA: Main catalog 
+    main_lamps_ballasts:
+        labels:
+            en_CA: Lamps & Ballasts
+        parent: master
+    main_lamps_ballasts_3_way_lamps:
+        labels:
+            en_CA: 3-Way Lamps
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_ballasts:
+        labels:
+            en_CA: Ballasts
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_incandescent_lamps:
+        labels:
+            en_CA: Incandescent Lamps
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_ballast_lamps:
+        labels:
+            en_CA: Ballast Lamps
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_cfl:
+        labels:
+            en_CA: CFL
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_floods_and_spots:
+        labels:
+            en_CA: Floods and Spots
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_halogen_lamps:
+        labels:
+            en_CA: Halogen Lamps
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_led_lamps:
+        labels:
+            en_CA: LED Lamps
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_led_strips:
+        labels:
+            en_CA: LED Strips
+        parent: main_lamps_ballasts
+    main_lamps_ballasts_hid_lamps:
+        labels:
+            en_CA: HID Lamps
+        parent: main_lamps_ballasts
+    main_tools:
+        labels:
+            en_CA: Tools
+        parent: master
+    main_tools_chemicals:
+        labels:
+            en_CA: Chemicals
+        parent: main_tools
+    main_tools_data_tools:
+        labels:
+            en_CA: Data Tools
+        parent: main_tools
+    main_tools_hand_tools:
+        labels:
+            en_CA: Hand Tools
+        parent: main_tools
+    main_tools_labelling_and_signage:
+        labels:
+            en_CA: Labelling and Signage
+        parent: main_tools
+    main_tools_power_tools:
+        labels:
+            en_CA: Power Tools
+        parent: main_tools
+    main_tools_insulation:
+        labels:
+            en_CA: Insulation
+        parent: main_tools
+    main_tools_straps_staples:
+        labels:
+            en_CA: Straps & Staples
+        parent: main_tools
+    main_tools_shop_supplies:
+        labels:
+            en_CA: Shop Supplies
+        parent: main_tools
+    main_switches_wiring_devices:
+        labels:
+            en_CA: Switches & Wiring Devices
+        parent: master
+    main_switches_wiring_devices_plugs_receptacles:
+        labels:
+            en_CA: Plugs & Receptacles
+        parent: main_switches_wiring_devices
+    main_switches_wiring_devices_wall_plates:
+        labels:
+            en_CA: Wall Plates
+        parent: main_switches_wiring_devices
+    main_switches_wiring_devices_dimmers:
+        labels:
+            en_CA: Dimmers
+        parent: main_switches_wiring_devices
+    main_switches_wiring_devices_switches:
+        labels:
+            en_CA: Switches
+        parent: main_switches_wiring_devices
+    main_switches_wiring_devices_gfci:
+        labels:
+            en_CA: GFCI
+        parent: main_switches_wiring_devices
+    main_switches_wiring_devices_motion_sensors:
+        labels:
+            en_CA: Motion Sensors
+        parent: main_switches_wiring_devices
+    main_conduit_raceways:
+        labels:
+            en_CA: Conduit & Raceways
+        parent: master
+    main_conduit_raceways_conduit:
+        labels:
+            en_CA: Conduit
+        parent: main_conduit_raceways
+    main_conduit_raceways_cable_trays:
+        labels:
+            en_CA: Cable Trays
+        parent: main_conduit_raceways
+    main_conduit_raceways_raceways:
+        labels:
+            en_CA: Raceways
+        parent: main_conduit_raceways
+    main_conduit_raceways_accessories:
+        labels:
+            en_CA: Accessories
+        parent: main_conduit_raceways
+    main_conduit_raceways_connectors:
+        labels:
+            en_CA: Connectors
+        parent: main_conduit_raceways
+    main_wire_cable:
+        labels:
+            en_CA: Wire & Cable
+        parent: master
+    main_wire_cable_armoured:
+        labels:
+            en_CA: Armoured
+        parent: main_wire_cable
+    main_wire_cable_low_voltage:
+        labels:
+            en_CA: Low Voltage
+        parent: main_wire_cable
+    main_wire_cable_specialty:
+        labels:
+            en_CA: Specialty
+        parent: main_wire_cable
+    main_wire_cable_bare:
+        labels:
+            en_CA: Bare
+        parent: main_wire_cable
+    main_wire_cable_industrial:
+        labels:
+            en_CA: Industrial
+        parent: main_wire_cable
+    main_wire_cable_portable:
+        labels:
+            en_CA: Portable
+        parent: main_wire_cable
+    main_wire_cable_reels:
+        labels:
+            en_CA: Reels
+        parent: main_wire_cable
+    main_wire_cable_data_low_voltage:
+        labels:
+            en_CA: Data & Low Voltage
+        parent: main_wire_cable
+    main_wire_cable_common:
+        labels:
+            en_CA: Aluminum
+        parent: main_wire_cable
+    main_test_measure:
+        labels:
+            en_CA: Test & Measure
+        parent: master
+    main_datacomm:
+        labels:
+            en_CA: Datacomm
+        parent: master
+    main_datacomm_accessories:
+        labels:
+            en_CA: Accessories
+        parent: main_datacomm
+    main_datacomm_outlets:
+        labels:
+            en_CA: Outlets
+        parent: main_datacomm
+    main_datacomm_low_voltage_cable:
+        labels:
+            en_CA: Low Voltage Cable
+        parent: main_datacomm
+    main_power_distribution:
+        labels:
+            en_CA: Power Distribution
+        parent: master
+    main_power_distribution_meter_sockets_accessories:
+        labels:
+            en_CA: Meter Sockets & Accessories
+        parent: main_power_distribution
+    main_power_distribution_panels:
+        labels:
+            en_CA: Panels
+        parent: main_power_distribution
+    main_power_distribution_switches:
+        labels:
+            en_CA: Switches
+        parent: main_power_distribution
+    main_power_distribution_transformers:
+        labels:
+            en_CA: Transformers
+        parent: main_power_distribution
+    main_fire_security:
+        labels:
+            en_CA: Fire & Security
+        parent: master
+    main_home_automation_controls_emergency_lighting:
+        labels:
+            en_CA: Emergency Lighting
+        parent: main_fire_security
+    main_home_automation_controls_alarm_signals:
+        labels:
+            en_CA: Alarm Signals
+        parent: main_fire_security
+    main_home_automation_controls:
+        labels:
+            en_CA: Home Automation & Controls
+        parent: master
+    main_home_automation_controls_video:
+        labels:
+            en_CA: Video
+        parent: main_home_automation_controls
+    main_home_automation_controls_accessories:
+        labels:
+            en_CA: Accessories
+        parent: main_home_automation_controls
+    main_home_automation_controls_audio:
+        labels:
+            en_CA: Audio
+        parent: main_home_automation_controls
+    main_home_automation_controls_controls:
+        labels:
+            en_CA: Controls
+        parent: main_home_automation_controls
+    main_home_automation_controls_lighting:
+        labels:
+            en_CA: Lighting
+        parent: main_home_automation_controls
+    main_health_safety:
+        labels:
+            en_CA: Health & Safety
+        parent: master
+    main_cable_management:
+        labels:
+            en_CA: Cable Management
+        parent: master
+    main_heating_ventilation:
+        labels:
+            en_CA: Heating & Ventilation
+        parent: master
+    main_heating_ventilation_heaters:
+        labels:
+            en_CA: Heaters
+        parent: main_heating_ventilation
+    main_heating_ventilation_surface_heating:
+        labels:
+            en_CA: Surface Heating
+        parent: main_heating_ventilation
+    main_heating_ventilation_thermostats_controls:
+        labels:
+            en_CA: Thermostats & Controls
+        parent: main_heating_ventilation
+    main_heating_ventilation_fans:
+        labels:
+            en_CA: Fans
+        parent: main_heating_ventilation
+    main_heating_ventilation_central_vacuum:
+        labels:
+            en_CA: Central Vacuum
+        parent: main_heating_ventilation
+    main_heating_ventilation_ventillation:
+        labels:
+            en_CA: Ventillation
+        parent: main_heating_ventilation
+    main_boxes_enclosures:
+        labels:
+            en_CA: Boxes & Enclosures
+        parent: master
+    main_boxes_enclosures_pvc_boxes:
+        labels:
+            en_CA: PVC Boxes
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_plates:
+        labels:
+            en_CA: Plates
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_accessories:
+        labels:
+            en_CA: Accessories
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_weatherproof_boxes:
+        labels:
+            en_CA: Weatherproof Boxes
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_weatherproof_covers:
+        labels:
+            en_CA: Weatherproof Covers
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_floor_boxes:
+        labels:
+            en_CA: Floor Boxes
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_junction_boxes:
+        labels:
+            en_CA: Junction Boxes
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_enclosures:
+        labels:
+            en_CA: Enclosures
+        parent: main_boxes_enclosures
+    main_boxes_enclosures_metal_boxes:
+        labels:
+            en_CA: Metal Boxes
+        parent: main_boxes_enclosures
+    main_lighting:
+        labels:
+            en_CA: Lighting
+        parent: master
+    main_lighting_troffers:
+        labels:
+            en_CA: Troffers
+        parent: main_lighting
+    main_lighting_recessed:
+        labels:
+            en_CA: Recessed
+        parent: main_lighting
+    main_lighting_wallpacks:
+        labels:
+            en_CA: Wallpacks
+        parent: main_lighting
+    main_lighting_recessed_trims:
+        labels:
+            en_CA: Recessed Trims
+        parent: main_lighting
+    main_lighting_recessed_leds:
+        labels:
+            en_CA: Recessed LEDs
+        parent: main_lighting
+    main_lighting_under_cabinet:
+        labels:
+            en_CA: Under Cabinet
+        parent: main_lighting
+    main_lighting_outdoor:
+        labels:
+            en_CA: Outdoor
+        parent: main_lighting
+    main_industrial_automation_controls:
+        labels:
+            en_CA: Industrial Automation & Controls
+        parent: master
+    main_industrial_automation_controls_automation_plc:
+        labels:
+            en_CA: Automation PLC
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_automation_discrete:
+        labels:
+            en_CA: Automation Discrete
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_automation_others:
+        labels:
+            en_CA: Automation Others
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_automation_interface:
+        labels:
+            en_CA: Automation Interface
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_control_detection:
+        labels:
+            en_CA: Control Detection
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_control_iec:
+        labels:
+            en_CA: Control IEC
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_control_nema:
+        labels:
+            en_CA: Control NEMA
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_control_safety:
+        labels:
+            en_CA: Control Safety
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_control_others:
+        labels:
+            en_CA: Control Others
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_motor_control_mmc:
+        labels:
+            en_CA: Motor Control(MMC)
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_motor_electrical:
+        labels:
+            en_CA: Motor Electrical
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_operator_interface:
+        labels:
+            en_CA: Operator Interface
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_service_software:
+        labels:
+            en_CA: Service Software
+        parent: main_industrial_automation_controls
+    main_industrial_automation_controls_automation_software:
+        labels:
+            en_CA: Automation Software
+        parent: main_industrial_automation_controls
+    main_connectors_terminals:
+        labels:
+            en_CA: Connectors & Terminals
+        parent: master
+    main_connectors_terminals_locknuts:
+        labels:
+            en_CA: Locknuts
+        parent: main_connectors_terminals
+    main_connectors_terminals_fittings:
+        labels:
+            en_CA: Fittings
+        parent: main_connectors_terminals
+    main_connectors_terminals_marretts:
+        labels:
+            en_CA: Marretts
+        parent: main_connectors_terminals
+    main_connectors_terminals_connectors:
+        labels:
+            en_CA: Connectors
+        parent: main_connectors_terminals
+    main_connectors_terminals_couplers:
+        labels:
+            en_CA: Couplers
+        parent: main_connectors_terminals
+    main_fuses_breakers:
+        labels:
+            en_CA: Fuses & Breakers
+        parent: master
+    main_fuses_breakers_breakers:
+        labels:
+            en_CA: Breakers
+        parent: main_fuses_breakers
+    main_fuses_breakers_fuse_accessories:
+        labels:
+            en_CA: Fuse Accessories
+        parent: main_fuses_breakers
+    main_fuses_breakers_fuse_blocks_holders:
+        labels:
+            en_CA: Fuse Blocks & Holders
+        parent: main_fuses_breakers
+    main_fuses_breakers_fuses:
+        labels:
+            en_CA: Fuses
+        parent: main_fuses_breakers
+
+
+    user:
+        labels:
+            en_CA: User Catalog
+    usr_lamps_ballasts:
+        labels:
+            en_CA: Lamps & Ballasts
+        parent: user
+    usr_lamps_ballasts_3_way_lamps:
+        labels:
+            en_CA: 3-Way Lamps
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_ballasts:
+        labels:
+            en_CA: Ballasts
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_incandescent_lamps:
+        labels:
+            en_CA: Incandescent Lamps
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_ballast_lamps:
+        labels:
+            en_CA: Ballast Lamps
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_cfl:
+        labels:
+            en_CA: CFL
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_floods_and_spots:
+        labels:
+            en_CA: Floods and Spots
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_halogen_lamps:
+        labels:
+            en_CA: Halogen Lamps
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_led_lamps:
+        labels:
+            en_CA: LED Lamps
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_led_strips:
+        labels:
+            en_CA: LED Strips
+        parent: usr_lamps_ballasts
+    usr_lamps_ballasts_hid_lamps:
+        labels:
+            en_CA: HID Lamps
+        parent: usr_lamps_ballasts
+    usr_tools:
+        labels:
+            en_CA: Tools
+        parent: user
+    usr_tools_chemicals:
+        labels:
+            en_CA: Chemicals
+        parent: usr_tools
+    usr_tools_data_tools:
+        labels:
+            en_CA: Data Tools
+        parent: usr_tools
+    usr_tools_hand_tools:
+        labels:
+            en_CA: Hand Tools
+        parent: usr_tools
+    usr_tools_labelling_and_signage:
+        labels:
+            en_CA: Labelling and Signage
+        parent: usr_tools
+    usr_tools_power_tools:
+        labels:
+            en_CA: Power Tools
+        parent: usr_tools
+    usr_tools_insulation:
+        labels:
+            en_CA: Insulation
+        parent: usr_tools
+    usr_tools_straps_staples:
+        labels:
+            en_CA: Straps & Staples
+        parent: usr_tools
+    usr_tools_shop_supplies:
+        labels:
+            en_CA: Shop Supplies
+        parent: usr_tools
+    usr_switches_wiring_devices:
+        labels:
+            en_CA: Switches & Wiring Devices
+        parent: user
+    usr_switches_wiring_devices_plugs_receptacles:
+        labels:
+            en_CA: Plugs & Receptacles
+        parent: usr_switches_wiring_devices
+    usr_switches_wiring_devices_wall_plates:
+        labels:
+            en_CA: Wall Plates
+        parent: usr_switches_wiring_devices
+    usr_switches_wiring_devices_dimmers:
+        labels:
+            en_CA: Dimmers
+        parent: usr_switches_wiring_devices
+    usr_switches_wiring_devices_switches:
+        labels:
+            en_CA: Switches
+        parent: usr_switches_wiring_devices
+    usr_switches_wiring_devices_gfci:
+        labels:
+            en_CA: GFCI
+        parent: usr_switches_wiring_devices
+    usr_switches_wiring_devices_motion_sensors:
+        labels:
+            en_CA: Motion Sensors
+        parent: usr_switches_wiring_devices
+    usr_conduit_raceways:
+        labels:
+            en_CA: Conduit & Raceways
+        parent: user
+    usr_conduit_raceways_conduit:
+        labels:
+            en_CA: Conduit
+        parent: usr_conduit_raceways
+    usr_conduit_raceways_cable_trays:
+        labels:
+            en_CA: Cable Trays
+        parent: usr_conduit_raceways
+    usr_conduit_raceways_raceways:
+        labels:
+            en_CA: Raceways
+        parent: usr_conduit_raceways
+    usr_conduit_raceways_accessories:
+        labels:
+            en_CA: Accessories
+        parent: usr_conduit_raceways
+    usr_conduit_raceways_connectors:
+        labels:
+            en_CA: Connectors
+        parent: usr_conduit_raceways
+    usr_wire_cable:
+        labels:
+            en_CA: Wire & Cable
+        parent: user
+    usr_wire_cable_armoured:
+        labels:
+            en_CA: Armoured
+        parent: usr_wire_cable
+    usr_wire_cable_low_voltage:
+        labels:
+            en_CA: Low Voltage
+        parent: usr_wire_cable
+    usr_wire_cable_specialty:
+        labels:
+            en_CA: Specialty
+        parent: usr_wire_cable
+    usr_wire_cable_bare:
+        labels:
+            en_CA: Bare
+        parent: usr_wire_cable
+    usr_wire_cable_industrial:
+        labels:
+            en_CA: Industrial
+        parent: usr_wire_cable
+    usr_wire_cable_portable:
+        labels:
+            en_CA: Portable
+        parent: usr_wire_cable
+    usr_wire_cable_reels:
+        labels:
+            en_CA: Reels
+        parent: usr_wire_cable
+    usr_wire_cable_data_low_voltage:
+        labels:
+            en_CA: Data & Low Voltage
+        parent: usr_wire_cable
+    usr_wire_cable_common:
+        labels:
+            en_CA: Aluminum
+        parent: usr_wire_cable
+    usr_test_measure:
+        labels:
+            en_CA: Test & Measure
+        parent: user
+    usr_datacomm:
+        labels:
+            en_CA: Datacomm
+        parent: user
+    usr_datacomm_accessories:
+        labels:
+            en_CA: Accessories
+        parent: usr_datacomm
+    usr_datacomm_outlets:
+        labels:
+            en_CA: Outlets
+        parent: usr_datacomm
+    usr_datacomm_low_voltage_cable:
+        labels:
+            en_CA: Low Voltage Cable
+        parent: usr_datacomm
+    usr_power_distribution:
+        labels:
+            en_CA: Power Distribution
+        parent: user
+    usr_power_distribution_meter_sockets_accessories:
+        labels:
+            en_CA: Meter Sockets & Accessories
+        parent: usr_power_distribution
+    usr_power_distribution_panels:
+        labels:
+            en_CA: Panels
+        parent: usr_power_distribution
+    usr_power_distribution_switches:
+        labels:
+            en_CA: Switches
+        parent: usr_power_distribution
+    usr_power_distribution_transformers:
+        labels:
+            en_CA: Transformers
+        parent: usr_power_distribution
+    usr_fire_security:
+        labels:
+            en_CA: Fire & Security
+        parent: user
+    usr_home_automation_controls_emergency_lighting:
+        labels:
+            en_CA: Emergency Lighting
+        parent: usr_fire_security
+    usr_home_automation_controls_alarm_signals:
+        labels:
+            en_CA: Alarm Signals
+        parent: usr_fire_security
+    usr_home_automation_controls:
+        labels:
+            en_CA: Home Automation & Controls
+        parent: user
+    usr_home_automation_controls_video:
+        labels:
+            en_CA: Video
+        parent: usr_home_automation_controls
+    usr_home_automation_controls_accessories:
+        labels:
+            en_CA: Accessories
+        parent: usr_home_automation_controls
+    usr_home_automation_controls_audio:
+        labels:
+            en_CA: Audio
+        parent: usr_home_automation_controls
+    usr_home_automation_controls_controls:
+        labels:
+            en_CA: Controls
+        parent: usr_home_automation_controls
+    usr_home_automation_controls_lighting:
+        labels:
+            en_CA: Lighting
+        parent: usr_home_automation_controls
+    usr_health_safety:
+        labels:
+            en_CA: Health & Safety
+        parent: user
+    usr_cable_management:
+        labels:
+            en_CA: Cable Management
+        parent: user
+    usr_heating_ventilation:
+        labels:
+            en_CA: Heating & Ventilation
+        parent: user
+    usr_heating_ventilation_heaters:
+        labels:
+            en_CA: Heaters
+        parent: usr_heating_ventilation
+    usr_heating_ventilation_surface_heating:
+        labels:
+            en_CA: Surface Heating
+        parent: usr_heating_ventilation
+    usr_heating_ventilation_thermostats_controls:
+        labels:
+            en_CA: Thermostats & Controls
+        parent: usr_heating_ventilation
+    usr_heating_ventilation_fans:
+        labels:
+            en_CA: Fans
+        parent: usr_heating_ventilation
+    usr_heating_ventilation_central_vacuum:
+        labels:
+            en_CA: Central Vacuum
+        parent: usr_heating_ventilation
+    usr_heating_ventilation_ventillation:
+        labels:
+            en_CA: Ventillation
+        parent: usr_heating_ventilation
+    usr_boxes_enclosures:
+        labels:
+            en_CA: Boxes & Enclosures
+        parent: user
+    usr_boxes_enclosures_pvc_boxes:
+        labels:
+            en_CA: PVC Boxes
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_plates:
+        labels:
+            en_CA: Plates
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_accessories:
+        labels:
+            en_CA: Accessories
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_weatherproof_boxes:
+        labels:
+            en_CA: Weatherproof Boxes
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_weatherproof_covers:
+        labels:
+            en_CA: Weatherproof Covers
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_floor_boxes:
+        labels:
+            en_CA: Floor Boxes
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_junction_boxes:
+        labels:
+            en_CA: Junction Boxes
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_enclosures:
+        labels:
+            en_CA: Enclosures
+        parent: usr_boxes_enclosures
+    usr_boxes_enclosures_metal_boxes:
+        labels:
+            en_CA: Metal Boxes
+        parent: usr_boxes_enclosures
+    usr_lighting:
+        labels:
+            en_CA: Lighting
+        parent: user
+    usr_lighting_troffers:
+        labels:
+            en_CA: Troffers
+        parent: usr_lighting
+    usr_lighting_recessed:
+        labels:
+            en_CA: Recessed
+        parent: usr_lighting
+    usr_lighting_wallpacks:
+        labels:
+            en_CA: Wallpacks
+        parent: usr_lighting
+    usr_lighting_recessed_trims:
+        labels:
+            en_CA: Recessed Trims
+        parent: usr_lighting
+    usr_lighting_recessed_leds:
+        labels:
+            en_CA: Recessed LEDs
+        parent: usr_lighting
+    usr_lighting_under_cabinet:
+        labels:
+            en_CA: Under Cabinet
+        parent: usr_lighting
+    usr_lighting_outdoor:
+        labels:
+            en_CA: Outdoor
+        parent: usr_lighting
+    usr_industrial_automation_controls:
+        labels:
+            en_CA: Industrial Automation & Controls
+        parent: user
+    usr_industrial_automation_controls_automation_plc:
+        labels:
+            en_CA: Automation PLC
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_automation_discrete:
+        labels:
+            en_CA: Automation Discrete
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_automation_others:
+        labels:
+            en_CA: Automation Others
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_automation_interface:
+        labels:
+            en_CA: Automation Interface
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_control_detection:
+        labels:
+            en_CA: Control Detection
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_control_iec:
+        labels:
+            en_CA: Control IEC
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_control_nema:
+        labels:
+            en_CA: Control NEMA
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_control_safety:
+        labels:
+            en_CA: Control Safety
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_control_others:
+        labels:
+            en_CA: Control Others
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_motor_control_mmc:
+        labels:
+            en_CA: Motor Control(MMC)
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_motor_electrical:
+        labels:
+            en_CA: Motor Electrical
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_operator_interface:
+        labels:
+            en_CA: Operator Interface
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_service_software:
+        labels:
+            en_CA: Service Software
+        parent: usr_industrial_automation_controls
+    usr_industrial_automation_controls_automation_software:
+        labels:
+            en_CA: Automation Software
+        parent: usr_industrial_automation_controls
+    usr_connectors_terminals:
+        labels:
+            en_CA: Connectors & Terminals
+        parent: user
+    usr_connectors_terminals_locknuts:
+        labels:
+            en_CA: Locknuts
+        parent: usr_connectors_terminals
+    usr_connectors_terminals_fittings:
+        labels:
+            en_CA: Fittings
+        parent: usr_connectors_terminals
+    usr_connectors_terminals_marretts:
+        labels:
+            en_CA: Marretts
+        parent: usr_connectors_terminals
+    usr_connectors_terminals_connectors:
+        labels:
+            en_CA: Connectors
+        parent: usr_connectors_terminals
+    usr_connectors_terminals_couplers:
+        labels:
+            en_CA: Couplers
+        parent: usr_connectors_terminals
+    usr_fuses_breakers:
+        labels:
+            en_CA: Fuses & Breakers
+        parent: user
+    usr_fuses_breakers_breakers:
+        labels:
+            en_CA: Breakers
+        parent: usr_fuses_breakers
+    usr_fuses_breakers_fuse_accessories:
+        labels:
+            en_CA: Fuse Accessories
+        parent: usr_fuses_breakers
+    usr_fuses_breakers_fuse_blocks_holders:
+        labels:
+            en_CA: Fuse Blocks & Holders
+        parent: usr_fuses_breakers
+    usr_fuses_breakers_fuses:
+        labels:
+            en_CA: Fuses
+        parent: usr_fuses_breakers
+
+    pim:
+        labels:
+            en_CA: Pim Catalog
+    sx:
+        labels:
+            en_CA: SX Catalog
+    web:
+        labels:
+            en_CA: web Catalog

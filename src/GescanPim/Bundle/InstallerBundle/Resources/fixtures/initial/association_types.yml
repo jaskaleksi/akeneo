@@ -1,0 +1,13 @@
+associations:
+    X_SELL:
+        labels:
+            en_CA: Cross sell
+    UPSELL:
+        labels:
+            en_CA: Upsell
+    SUBSTITUTION:
+        labels:
+            en_CA: Substitution
+    PACK:
+        labels:
+            en_CA: Pack

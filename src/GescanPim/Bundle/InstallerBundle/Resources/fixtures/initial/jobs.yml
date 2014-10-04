@@ -1,0 +1,67 @@
+#jobs:
+#    etim_import_features:
+#        connector: Gescan Connector
+#        alias:     etim_import_features
+#        label:     Import Etim Features
+#        type:      import
+#        configuration:
+#            filePath:           /home/ecoisne/data/etim/extractedFeatures.csv
+#            uploadAllowed:      true
+#            delimiter:          ,
+#            enclosure:          '"'
+#            escape:             '"'
+#            enabled:            true
+#            realTimeVersioning: true
+#    etim_import_group:
+#        connector: Gescan Connector
+#        alias:     etim_import_group
+#        label:     Import Etim Group
+#        type:      import
+#        configuration:
+#            filePath:           /home/ecoisne/data/etim/extractedGroup.csv
+#            uploadAllowed:      true
+#            delimiter:          ,
+#            enclosure:          '"'
+#            escape:             '"'
+#            enabled:            true
+#            realTimeVersioning: true
+#   etim_import_class:
+#        connector: Gescan Connector
+#        alias:     etim_import_class
+#        label:     Import Etim Class
+#        type:      import
+#        configuration:
+#            filePath:           /home/ecoisne/data/etim/extractedGroup.csv
+#            uploadAllowed:      true
+#            delimiter:          ,
+#            enclosure:          '"'
+#            escape:             '"'
+#            enabled:            true
+#            realTimeVersioning: true
+#    eleknet_import_category:
+#        connector: Gescan Connector
+#        alias:     eleknet_import_catalog
+#        type:      import
+#        configuration:
+#            filePath:           /home/ecoisne/data/sx/SXCat_Level1.csv
+#            filePathLevel2:     /home/ecoisne/data/sx/SXCat_Level2.csv
+#            filePathLevel3:     /home/ecoisne/data/sx/SXCat_Level3.csv
+#            uploadAllowed:      true
+#            delimiter:          '|'
+#            enclosure:          '"'
+#            escape:             '"'
+#            enabled:            true
+#            realTimeVersioning: true
+#    eleknet_import_product:
+#        connector: Gescan Connector
+#        alias:     eleknet_import_product
+#        label:     Import Eleknet Product
+#        type:      import
+#        configuration:
+#            filePath:           /home/ecoisne/data/sx/SX_Gescan.csv
+#            uploadAllowed:      true
+#            delimiter:          '|'
+#            enclosure:          '"'
+#            escape:             '"'
+#            enabled:            true
+#            realTimeVersioning: true

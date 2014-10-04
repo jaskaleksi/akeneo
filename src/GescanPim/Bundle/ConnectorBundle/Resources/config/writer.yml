@@ -1,0 +1,9 @@
+services:
+    gescanpim.connector.writer.doctrine.product:
+        parent: pim_base_connector.writer.doctrine.product
+        calls:
+            - [ addNonClearableEntity, [ %pim_catalog.entity.family.class% ] ]
+            - [ addNonClearableEntity, [ %pim_catalog.entity.category.class% ] ]
+            - [ addNonClearableEntity, [ %pim_catalog.entity.attribute_group.class% ] ]
+            - [ addNonClearableEntity, [ %pim_catalog.entity.category_translation.class% ] ]
+            - [ addNonClearableEntity, [ %pim_catalog.entity.attribute_option.class% ] ]

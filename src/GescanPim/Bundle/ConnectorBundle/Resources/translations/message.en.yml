@@ -1,0 +1,12 @@
+gescan_pim_connector:
+    jobs:
+        pim_product:
+            title: Pim Product Jobs
+            import:
+                title: Product Import Step
+        magento_product:
+            import:
+                title: Magento Product Jobs
+                import:
+                    title: Product Import Step
+        

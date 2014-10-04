@@ -1,0 +1,27 @@
+services:
+    gescanpim.finalchannel.subscriber:
+        class: GescanPim\Bundle\ConnectorBundle\Event\FinalChannelListener
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        arguments:
+            - '%upload_dir%'
+            - '@logger'
+    gescanpim.services.producttransformer:
+        class: GescanPim\Bundle\ConnectorBundle\Services\ProductItemTransformer
+    gescanpim.services.encoding:
+        class: GescanPim\Bundle\ConnectorBundle\Services\Encoding
+    gescanpim.services.mapping:
+        class: GescanPim\Bundle\ConnectorBundle\Services\MappingServices
+        arguments:
+            - '@doctrine.orm.entity_manager'
+    gescan_connector_form_mappingcode:
+         class: GescanPim\Bundle\ConnectorBundle\Form\Type\MappingCodeType
+         tags:
+            -  { name: form.type }
+         arguments:
+            - '@gescanpim.services.mapping'
+            - '@pim_catalog.repository.attribute'
+    gescan_connector_form_referential:
+         class: GescanPim\Bundle\ConnectorBundle\Form\Type\ReferentialType
+         tags:
+            -  { name: form.type }

@@ -1,0 +1,55 @@
+channels:
+    final:
+        label: Final Product
+        locales:
+            - en_CA
+        currencies:
+            - CAD
+        tree: master
+        color: red
+    user:
+        label: User Interface Product
+        locales:
+            - en_CA
+        currencies:
+            - CAD
+        color: orange
+    magento:
+        label: Magento Product
+        locales:
+            - en_CA
+        currencies:
+            - CAD
+        color: white
+    pim:
+        label: Pim Product
+        locales:
+            - en_CA
+        currencies:
+            - CAD
+        tree: pim
+        color: yellow
+    eleknet:
+        label: Eleknet Product
+        locales:
+            - en_CA
+        currencies:
+            - CAD
+        tree: sx
+        color: cyan
+    sx:
+        label: SX Product
+        locales:
+            - en_CA
+        currencies:
+            - CAD
+        tree: sx
+        color: gray
+    web:
+        label: Web Product
+        locales:
+            - en_CA
+        currencies:
+            - CAD
+        tree: web
+        color: violet

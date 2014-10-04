@@ -1,0 +1,173 @@
+connector:
+    name: Gescan Connector
+    jobs:
+        etim_import_mapping:
+            title: Import Etim Mapping
+            type:  import
+            steps:
+                import:
+                   title: Import Etim Mapping
+                   services:
+                       reader:   gescan_connector.reader.file.etim_csv
+                       processor: gescan_connector.processor.etim_mapping
+                       writer:   pim_base_connector.writer.doctrine
+        etim_import_group:
+            title: Import Etim Group
+            type:  import
+            steps:
+                import:
+                   title: Import Etim Group to family & Category
+                   services:
+                       reader:   gescan_connector.reader.file.etim_csv
+                       processor: gescan_connector.processor.etim_group
+                       writer:   pim_base_connector.writer.doctrine
+        etim_import_class:
+            title: Import Etim Class
+            type:  import
+            steps:
+                import:
+                   title: Import Etim Group to family & Category
+                   services:
+                       reader:   gescan_connector.reader.file.etim_csv
+                       processor: gescan_connector.processor.etim_class_category
+                       writer:   pim_base_connector.writer.doctrine
+        pim_import_product:
+            title: Import Pim Product
+            type:  import
+            steps:
+                import:
+                   title: Import Pim Product
+                   services:
+                       reader:   gescan_connector.reader.file.pim_xml_product
+                       processor: gescan_connector.processor.pim_product
+                       writer:   gescanpim.connector.writer.doctrine.product
+        magento_import_product:
+            title: Import Magento Product
+            type:  import
+            steps:
+                import:
+                   title: Import Magento Product
+                   services:
+                       reader:   gescan_connector.reader.file.magento_csv_product
+                       processor: gescan_connector.processor.csv_product
+                       writer:   gescanpim.connector.writer.doctrine.product 
+        magento_export_csv_product:
+            title: Export Magmi Product
+            type:  export
+            steps:
+                import:
+                   title: Import Magmi Product
+                   services:
+                       reader:   gescan_connector.reader.doctrine.allproduct
+                       processor: gescan_connector.processor.magento_csv_product
+                       writer:   pim_base_connector.writer.file 
+        eleknet_export_eleknet_attribute_set:
+            title: Export Eleknet Attribute Set
+            type:  export
+            steps:
+                import:
+                   title: Import Magmi Product
+                   services:
+                       reader:   gescan_connector.reader.file.eleknet_attribute_product_csv
+                       processor: gescan_connector.processor.eleknet_attribute_set
+                       writer:   pim_base_connector.writer.file 
+        sx_import_product:
+            title: Import SX Product
+            type:  import
+            steps:
+                import:
+                   title: Import SX Product
+                   services:
+                       reader: gescan_connector.reader.file.xml
+                       processor: gescan_connector.processor.sx_product
+                       writer:   gescanpim.connector.writer.doctrine.product
+        sx_import_icsw:
+            title: Import SX Qty
+            type:  import
+            steps:
+                import:
+                   title: Import SX Qty
+                   services:
+                       reader: gescan_connector.reader.file.sx_icsw
+                       processor: gescan_connector.processor.sx_icsw
+                       writer:   gescanpim.connector.writer.doctrine.product
+        eleknet_import_catalog:
+            title: Import Eleknet Category
+            type:  import
+            steps:
+                import_product:
+                    title: Import Eleknet Product
+                    services:
+                       reader: gescan_connector.reader.file.eleknet_category_csv
+                       processor: gescan_connector.processor.eleknet_category
+                       writer:   pim_base_connector.writer.doctrine
+        eleknet_import_product:
+            title: Import Eleknet Product
+            type:  import
+            steps:
+                import_product:
+                    title: Import Eleknet Product
+                    services:
+                       reader: gescan_connector.reader.file.eleknet_product_csv
+                       processor: gescan_connector.processor.eleknet_product
+                       writer:   gescanpim.connector.writer.doctrine.product
+        eleknet_import_product_detail:
+            title: Import Eleknet Product Detail
+            type:  import
+            steps:
+                import_product_detail:
+                    title: Import Eleknet Product Detail
+                    services:
+                       reader: pim_base_connector.reader.file.csv
+                       processor: gescan_connector.processor.eleknet_product_detail
+                       writer:   gescanpim.connector.writer.doctrine.product
+        eleknet_mapping_product_attribute:
+            title: Import Eleknet Product Attributes
+            type:  import
+            steps:
+                import_product_attribute:
+                    title: Import Eleknet Product Attributes
+                    services:
+                       reader: pim_base_connector.reader.file.csv
+                       processor: gescan_connector.processor.eleknet_product_attribute
+                       writer:   gescanpim.connector.writer.doctrine.product
+        eleknet_import_product_document:
+            title: Import Eleknet Product Document
+            type:  import
+            steps:
+                import_product_detail:
+                    title: Import Eleknet Product Document
+                    services:
+                       reader: pim_base_connector.reader.file.csv
+                       processor: gescan_connector.processor.eleknet_product_document
+                       writer:   gescanpim.connector.writer.doctrine.product
+        gescan_import_csv_product:
+            title: Import Product from CSV
+            type:  import
+            steps:
+                import_product_detail:
+                    title: Import Product from CSV
+                    services:
+                       reader: pim_base_connector.reader.file.csv
+                       processor: gescan_connector.processor.csv_product
+                       writer:   gescanpim.connector.writer.doctrine.product
+        gescan_import_web_product:
+            title: Import Product from Web Ripper
+            type:  import
+            steps:
+                import_product_detail:
+                    title: Import Product from Web Ripper
+                    services:
+                       reader: gescan_connector.reader.file.xml
+                       processor: gescan_connector.processor.web
+                       writer:   gescanpim.connector.writer.doctrine.product
+        gescan_merge_product:
+            title: Merge Product
+            type:  import
+            steps:
+                import_product_detail:
+                    title: Merge Product
+                    services:
+                       reader:    gescan_connector.reader.doctrine.allproduct
+                       processor: gescan_connector.processor.merge_product
+                       writer:    gescanpim.connector.writer.doctrine.product

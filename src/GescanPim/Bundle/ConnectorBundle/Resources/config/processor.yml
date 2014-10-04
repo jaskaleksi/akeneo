@@ -1,0 +1,96 @@
+services:
+    gescan_connector.processor.abstract_product:
+        abstract: true
+        arguments:
+            - '@pim_catalog.manager.product'
+            - '@pim_catalog.manager.category'
+            - '@pim_catalog.repository.family'
+            - '@gescanpim.repository.mapping_code'
+            - '@gescanpim.repository.attribute_list'
+            - '@pim_catalog.manager.channel'
+            - '@gescanpim.finalchannel.subscriber'
+            - '@logger'
+        tags:
+            - { name: monolog.logger, channel: batch }
+    gescan_connector.processor.csv_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\CSVProductProcessor'
+        parent: gescan_connector.processor.abstract_product
+    gescan_connector.processor.merge_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\MergingProductProcessor'
+        arguments:
+            - '@gescanpim.finalchannel.subscriber'
+            - '@doctrine.orm.entity_manager'
+            - '@logger'
+        tags:
+            - { name: monolog.logger, channel: batch }
+#################### ETIM ######################################################
+    gescan_connector.processor.etim_mapping:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Etim\MappingProcessor'
+        arguments:
+            - '@gescanpim.repository.mapping_code'
+    gescan_connector.processor.etim_group:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Etim\GroupProcessor'
+        arguments:
+            - '@pim_catalog.repository.family'
+            - '@pim_catalog.repository.category'
+            - '@pim_catalog.repository.attribute'
+            - '@pim_catalog.repository.channel'
+            - 'family'
+    gescan_connector.processor.etim_class_category:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Etim\ClassProcessor'
+        arguments:
+            - '@pim_catalog.repository.category'
+            
+#################### PIM #######################################################            
+    gescan_connector.processor.pim_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Pim\ProductProcessor'
+        parent: gescan_connector.processor.abstract_product
+
+#################### MAGENTO ###################################################
+    gescan_connector.processor.magento_csv_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Magento\ProductCsvProcessor'
+        arguments:
+            - '@pim_catalog.manager.channel'
+            - '@pim_catalog.repository.attribute'
+            - '@doctrine.orm.entity_manager'
+        
+#################### SX ########################################################       
+    gescan_connector.processor.sx_manufacturer:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Sx\ManufacturerProcessor'
+        arguments:
+            - '@gescanpim.repository.mapping_code'
+            - 'manufacturer'
+            - 'sx'
+    gescan_connector.processor.sx_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Sx\ProductProcessor'
+        parent: gescan_connector.processor.abstract_product
+    gescan_connector.processor.sx_icsw:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Sx\IcswProcessor'
+        parent: gescan_connector.processor.abstract_product
+
+#################### ELEKNET ###################################################
+    gescan_connector.processor.eleknet_category:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Eleknet\CategoryProcessor'
+        arguments:
+            - '@pim_catalog.repository.category'
+    gescan_connector.processor.eleknet_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Eleknet\ProductProcessor'
+        parent: gescan_connector.processor.abstract_product
+    gescan_connector.processor.eleknet_product_detail:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Eleknet\ProductDetailProcessor'
+        parent: gescan_connector.processor.abstract_product
+    gescan_connector.processor.eleknet_product_attribute:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Eleknet\ProductAttributeProcessor'
+        parent: gescan_connector.processor.abstract_product
+    gescan_connector.processor.eleknet_product_document:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Eleknet\ProductDocumentProcessor'
+        parent: gescan_connector.processor.abstract_product
+    gescan_connector.processor.eleknet_attribute_set:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Eleknet\AttributeSetProcessor'
+        arguments:
+            - '@pim_catalog.repository.category'
+            - '@pim_catalog.manager.product'
+#################### WEB ###################################################
+    gescan_connector.processor.web:
+        class: 'GescanPim\Bundle\ConnectorBundle\Processor\Web\WebProcessor'
+        parent: gescan_connector.processor.abstract_product

@@ -1,0 +1,37 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    router:   { resource: "%kernel.root_dir%/config/routing_dev.yml" }
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                metadata_cache_driver: array
+                query_cache_driver:    array
+
+monolog:
+    handlers:
+        main:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: error
+        firephp:
+            type:  firephp
+            level: error
+
+oro_assetic:
+    css_debug:      ~
+    css_debug_all:  false
+
+swiftmailer:
+    disable_delivery: true
+
+parameters:
+    apy_js_form_validation.yui_js: false

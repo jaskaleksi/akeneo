@@ -1,0 +1,11 @@
+services:
+    gescanpim.repository.mapping_code:
+        class: GescanPim\Bundle\ConnectorBundle\Entity\MappingCodeRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: 'getRepository'
+        arguments: ['GescanPimConnectorBundle:MappingCode']
+    gescanpim.repository.attribute_list:
+        class: GescanPim\Bundle\ConnectorBundle\Entity\AttributeListRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: 'getRepository'
+        arguments: ['GescanPimConnectorBundle:AttributeList']

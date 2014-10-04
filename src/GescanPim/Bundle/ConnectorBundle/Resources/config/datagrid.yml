@@ -1,0 +1,99 @@
+datagrid:
+    mapping_code:
+        extends: custom_entity
+        options:
+            entityHint: mapping_code
+        columns:
+            code:
+                label: Code
+            type:
+                label: Code
+            source:
+                label: Source
+            initialValue:
+                label: Initial Value
+            value:
+                label: Value
+            ignored:
+                label: Ignored
+        filters:
+            columns:
+                code:
+                    type: string
+                    label: Code
+                    data_name: o.code
+                type:
+                    type: string
+                    label: Type
+                    data_name: o.type
+                source:
+                    type: string
+                    label: Source
+                    data_name: o.source
+                initialValue:
+                    type: string
+                    label: Initial Value
+                    data_name: o.initialValue
+                value:
+                    type: string
+                    label: Value
+                    data_name: o.value
+                ignored:
+                    type: string     
+                    label: Ignored
+                    data_name: o.ignored
+
+        sorters:
+            columns:
+                code:
+                    data_name: o.code
+                type:
+                    data_name: o.type
+                source:
+                    data_name: o.source
+                initialValue:
+                    data_name: o.initialValue
+                value:
+                    data_name: o.value
+                ignored:
+                    data_name: o.ignored
+            default:
+                code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
+    manufacturer:
+        extends: custom_entity
+        options:
+            entityHint: manufacturer
+        columns:
+            name:
+                label: Name
+        filters:
+            columns:
+                name:
+                    type: string
+                    label: Name
+                    data_name: o.name
+        sorters:
+            columns:
+                name:
+                    data_name: o.name
+            default:
+                code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'
+    color:
+        extends: custom_entity
+        options:
+            entityHint: color
+        columns:
+            name:
+                label: Name
+        filters:
+            columns:
+                name:
+                    type: string
+                    label: Name
+                    data_name: o.name
+        sorters:
+            columns:
+                name:
+                    data_name: o.name
+            default:
+                code: '%oro_datagrid.extension.orm_sorter.class%::DIRECTION_ASC'

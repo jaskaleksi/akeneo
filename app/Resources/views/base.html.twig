@@ -1,0 +1,305 @@
+{% extends "OroUIBundle:Default:index.html.twig" %}
+
+{% block head_script %}
+    {{ parent() }}
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                "datatables": "/js/jquery.dataTables"
+            },
+            waitSeconds: 0
+        });
+
+        require(['pim/init','oro/init-layout','pim/ui','jquery','jquery-ui-full'], function(init) {
+        init();
+        require(['jquery','datatables'],
+        function($, localeSettings) {
+            $(document).ready(function(){
+
+            window.setTimeout(function(){
+
+                var order ={
+                                        {% for attribute,order in gescanpim_services_mapping.getAllChannelOrder() %}
+                                           "{{ attribute }}":[
+                                                        {% for channel in order %}
+                                                                "{{ channel }}"{% if loop.last %}{% else %},{% endif %}
+                                                        {% endfor %}
+                                           ]
+                                        {% endfor %}            
+                                };
+                
+                $('#pim_product_edit_values__url_product_link_final').parent().find('input[type="text"]').each(function(){
+                    if ($(this).val()) {
+                        $(this).next('div').prepend('<a href="'+$(this).val()+'" class="icon-external-link" target="_blank"></a>');
+                    }
+                });
+                $('div[data-scope]').each(function(){
+                        if($(this).attr('data-scope')!='user'){
+                            var input = $(this).find('input[type=text]');
+                            if(input.length>0){
+                                
+                                input.first().attr('readonly',1);
+                                 if($(this).attr('data-scope')!='final'&&!input.first().val()){
+                                     $(this).addClass('hide');
+                                 }
+                             }else{
+                                input = $(this).find('textarea');
+                                if(input.length>0){
+                                   
+                                   input.first().attr('readonly',1);
+                                    if($(this).attr('data-scope')!='final'&&!input.first().text()){
+                                        $(this).addClass('hide');
+                                    }
+                                }else{
+                                    input = $(this).find('input[type=file]');
+                                    if(input.length>0){
+                                        input.first().attr('disabled','disabled');
+                                         if($(this).attr('data-scope')!='final'&&$(this).find('.upload-info .upload-preview.empty').length>0){
+                                    
+                                             $(this).addClass('hide');
+                                         }
+                                     }
+                                }
+                            }
+                        }
+                   });
+                   
+                    $('div.scopable').each(function(){
+                            var div = $(this).find('div:first')
+                            var attribute = div.attr('id');
+                            attribute = attribute.replace('pim_product_edit_values_','').replace('_'+div.attr('data-scope'),'');
+                            var currentOrder ='';
+                            if(order[attribute]){
+                                    currentOrder = order[attribute];
+                            }else{
+                                    currentOrder = order['default'];
+                            }
+                            //console.log(currentOrder);
+                            $(this).append($(this).find('#pim_product_edit_values_'+attribute+'_final'));
+                            var icon =  $(this).find('i.remove-attribute');
+                            $(this).find('#pim_product_edit_values_'+attribute+'_final div.icons-container').append(icon.first());
+                            switch(attribute){
+                                    default:
+                                            for(i=0;i<currentOrder.length;i++){
+                                                     $(this).append($(this).find('#pim_product_edit_values_'+attribute+'_'+currentOrder[i]));
+                                            }
+                            }
+                    });
+    //});
+
+                 function removeURLParameter(url, parameter) {
+                         //prefer to use l.search if you have a location/link object
+                         var urlparts= url.split('?');   
+                         if (urlparts.length>=2) {
+                                 return urlparts[0];
+                         } else {
+                                 return url;
+                         }
+                 }
+
+                 $('.upload-info img').each(function(){
+                    var currentimage= $(this);
+
+                    var theImage = new Image();
+                    theImage.src = removeURLParameter(currentimage.attr("src"));
+
+                    // Get accurate measurements from that.
+                   theImage.onload = function() {
+                        imageWidth = this.naturalWidth ;
+                        imageHeight = this.naturalHeight  ;
+                        currentimage.after( '<span style="position: absolute;top: -20px;right: 10px;font-size: 17px;">'+imageWidth + 'x' + imageHeight+'</span>');
+                    }
+                
+                });
+         
+                var field = $('#pim_product_edit_values_color_user_varchar');
+                var input='';
+                var name= '';
+                var select = ''
+                if(field){
+                         select = '<select style="width:350px" name="'+field.attr('name')+'"><option></option>';
+                        {% for key,val in gescanpim_services_mapping.getColorList() %}
+                        select += '<option value="{{ key }}">{{ val }}</option>';
+                        {% endfor %} 
+                        select+='</select>'
+                        select = $(select);
+                        select.find('option[value="'+field.val()+'"]').attr('selected','selected');
+                        field.parent().prepend(select);
+                        field.remove();
+                }
+                field = $('#pim_product_edit_values_manufacturer_user_varchar');
+                if(field){
+                         select = '<select style="width:350px" name="'+field.attr('name')+'"><option></option>';
+                        {% for key,val in gescanpim_services_mapping.getManufacturerList() %}
+                        select += '<option value="{{ key }}">{{ val }}</option>';
+                        {% endfor %} 
+                        select+='</select>'
+                        select = $(select);
+                        select.find('option[value="'+field.val()+'"]').attr('selected','selected');
+                        field.parent().prepend(select);
+                        field.remove();
+                }
+
+                $('#pim_product_edit_values_image_1_final').parent('div').attr('id','input-main-image');
+            
+            
+                require(
+                ['jquery', 'oro/mediator'],
+                function ($, mediator) {
+                        'use strict';
+                        $(function () {
+                                        mediator.trigger('scopablefield:expand');
+
+                        });
+                });
+                if($('#pim_product_edit_values__unused_attribute_json_text') && $('#pim_product_edit_values__unused_attribute_json_text').val()){
+                    var json = JSON.parse($('#pim_product_edit_values__unused_attribute_json_text').val());
+
+                    var div = $('#pim_product_edit_values__unused_attribute_json_text').parents('.attribute-field')
+                                                                                            .css('margin-left', '10px')
+                                                                                            .css('margin-right', '10px')
+                                                                                            .html(
+                            '<table id="unuseddatatable" class="grid table-hover table table-bordered table-condensed">' +
+                                    '<thead>' +
+                                        '<tr>' +
+                                            '<th width="10%">Channel</th>' +
+                                            '<th width="10%">Channel Mapping</th>' +
+                                            '<th>Attribute</th>' +
+                                            '<th>Value</th>' +
+                                        '</tr>' +
+                                    '</thead>' +
+                                    '<tbody id="unused-attribute-body"></tbody>' +
+                                '</table>');
+                    var display_channel = false;
+                    var display_channel_mapping = false;
+                    for (var channel in json) {
+                        display_channel = true
+                        for (var channelmapping in json[channel]) {
+                            display_channel_mapping = true;
+                            for (var attribute in json[channel][channelmapping]) {
+                                $('#unused-attribute-body').append('<tr>' +
+                                                                        '<td>'+channel+'</td>' +
+                                                                        '<td>'+channelmapping+'</td>' +
+                                                                        '<td>'+attribute+'</td>' +
+                                                                        '<td>'+json[channel][channelmapping][attribute]+'</td>' +
+                                                                   '</tr>');
+                                display_channel_mapping = false;
+                            }
+                            display_channel = false
+                        }
+                    }
+                    $('#unuseddatatable').DataTable({
+                        "order": [[ 2, "asc" ]]
+                    });
+
+                }else if($('#pim_product_edit_values__unused_attribute_json_text')){
+                    $('#pim_product_edit_values__unused_attribute_json_text').parent('.attribute-field').html('empty');
+                }
+        },1000);
+        });
+        });
+        });
+    
+        
+    </script>
+    {% if uservoice_key is not null %}
+        {% include 'PimUIBundle:Default:pim_uservoice.js.twig' %}
+    {% endif %}
+    {{ block('head_script_component') }}
+{% endblock %}
+
+{% block head_style %}
+    {{ parent() }}
+    {% stylesheets
+        'bundles/pimui/css/pim.less'
+
+        debug=false
+        filter='cssrewrite,lessphp'
+        output='css/pim_all.css'
+    %}
+    <link rel="stylesheet" media="all" href="{{ asset_url }}" />
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
+    {% endstylesheets %}
+    <style>
+        div[data-scope].hide:not(:first-of-type){
+            display:none !important;
+        }
+        
+        div[data-scope].hide .upload-info{
+            visibility: hidden;
+        }
+        
+        input[readonly], textarea[readonly]{
+            background-color : #DDD;
+        }
+        
+        div[data-scope=final] input[readonly],div[data-scope=final] textarea[readonly]{
+            background-color : #EEE;
+        }
+        
+        div[data-scope=magento] div.scopable-input a.remove-upload,
+        div[data-scope=eleknet] div.scopable-input a.remove-upload,
+        div[data-scope=final] div.scopable-input a.remove-upload,
+        div[data-scope=pim] div.scopable-input a.remove-upload,
+        div[data-scope=sx] div.scopable-input a.remove-upload,
+        div[data-scope=vendor] div.scopable-input a.remove-upload,
+        div[data-scope=web] div.scopable-input a.remove-upload
+        {
+           display:none
+        }
+        div[data-scope=magento] div.scopable-input div.upload-info,
+        div[data-scope=eleknet] div.scopable-input div.upload-info,
+        div[data-scope=final] div.scopable-input div.upload-info,
+        div[data-scope=pim] div.scopable-input div.upload-info,
+        div[data-scope=sx] div.scopable-input div.upload-info,
+        div[data-scope=vendor] div.scopable-input div.upload-info,
+        div[data-scope=web] div.scopable-input div.upload-info{
+            width:320px;
+        }
+        div[data-scope=magento] div.scopable-input,
+        div[data-scope=eleknet] div.scopable-input ,
+        div[data-scope=pim] div.scopable-input ,
+        div[data-scope=sx] div.scopable-input ,
+        div[data-scope=vendor] div.scopable-input ,
+        div[data-scope=web] div.scopable-input{
+            opacity: 0.8;
+        }
+        div[data-scope=magento] div.scopable-input input[value=''],
+        div[data-scope=eleknet] div.scopable-input input[value=''],
+        div[data-scope=pim] div.scopable-input input[value=''],
+        div[data-scope=sx] div.scopable-input input[value=''],
+        div[data-scope=vendor] div.scopable-input input[value='']{
+            display:none;
+        }
+        
+        #pim_product_edit #channel-switcher{
+            display: none;
+        } 
+        .attribute-field.scopable label.control-label i.field-toggle{
+            display: none !important;
+        }
+        .form-horizontal .control-group{
+            max-width: 800px;
+        }
+        .attribute-field .input-large {
+            width: 520px;
+        }
+
+        .attribute-field.scopable textarea.input-large {
+            width: 520px !important;
+        }
+
+        #input-main-image{
+            position: absolute;
+            right: 100px;
+            top: 270px;
+        }
+        
+    </style>
+    {{ block('head_style_component') }}
+{% endblock %}
+
+{% block main %}
+    {{ parent() }}
+    {{ oro_windows_restore() }}
+{% endblock %}

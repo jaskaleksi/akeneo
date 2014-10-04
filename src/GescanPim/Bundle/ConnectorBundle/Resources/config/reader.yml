@@ -1,0 +1,36 @@
+services:
+    gescan_connector.reader.file.pim_xml_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Pim\XmlProductReader'
+    gescan_connector.reader.file.pim_xml_feature:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Pim\XmlFeaturesReader'
+        arguments:
+            - '@pim_catalog.manager.category'
+    gescan_connector.reader.file.xml:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\XmlReader'
+            
+    gescan_connector.reader.file.magento_csv_product:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Magento\CsvProductReader'
+        parent: pim_base_connector.reader.file.csv
+        
+    gescan_connector.reader.file.etim_csv:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Etim\CsvReader'
+        parent: pim_base_connector.reader.file.csv
+        
+    gescan_connector.reader.doctrine.allproduct:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\Doctrine\AllProductReader'
+        arguments:
+            - '@pim_catalog.repository.product'
+            - '@doctrine.orm.entity_manager'
+    gescan_connector.reader.file.sx_manufacturer:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Sx\XmlManufacturerReader'      
+    gescan_connector.reader.file.sx_icsw:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Sx\IcswXmlReader'
+    gescan_connector.reader.file.eleknet_category_csv:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Eleknet\CategoryCsvReader'
+        parent: pim_base_connector.reader.file.csv
+    gescan_connector.reader.file.eleknet_product_csv:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Eleknet\ProductCsvReader'
+        parent: pim_base_connector.reader.file.csv
+    gescan_connector.reader.file.eleknet_attribute_product_csv:
+        class: 'GescanPim\Bundle\ConnectorBundle\Reader\File\Eleknet\ProductAttributeCsvReader'
+        parent: pim_base_connector.reader.file.csv

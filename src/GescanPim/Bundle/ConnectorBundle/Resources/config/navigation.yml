@@ -1,0 +1,29 @@
+oro_menu_config:
+    items:
+        gescan_referential_tab:
+             label:              'Referential'
+             uri: '#'
+             extras:
+                position: 200
+             showNonAuthorized: false
+        gescan_referential_mapping:
+            label:              'Mapping Value'
+            route:              'pim_customentity_index'
+            routeParameters:    { customEntityName: mapping_code }
+        gescan_referential_manufacturer:
+            label:              'Manufacturer'
+            route:              'pim_customentity_index'
+            routeParameters:    { customEntityName: manufacturer }
+        gescan_referential_color:
+            label:              'Color'
+            route:              'pim_customentity_index'
+            routeParameters:    { customEntityName: color }
+        
+    tree:
+        application_menu:
+            children:
+                gescan_referential_tab:
+                    children:
+                        gescan_referential_manufacturer: ~
+                        gescan_referential_color: ~
+                        gescan_referential_mapping: ~
