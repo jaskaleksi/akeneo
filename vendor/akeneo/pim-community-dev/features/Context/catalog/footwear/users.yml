@@ -1,0 +1,13 @@
+users:
+    admin:
+        catalogLocale: en_US
+        catalogScope:  mobile
+        defaultTree:   2014_collection
+    Julia:
+        catalogLocale: en_US
+        catalogScope:  tablet
+        defaultTree:   2014_collection
+    Peter:
+        catalogLocale: en_US
+        catalogScope:  mobile
+        defaultTree:   2014_collection

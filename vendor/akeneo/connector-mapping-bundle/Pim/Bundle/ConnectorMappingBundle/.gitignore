@@ -1,0 +1,4 @@
+bin/
+build/
+composer.phar
+vendor/

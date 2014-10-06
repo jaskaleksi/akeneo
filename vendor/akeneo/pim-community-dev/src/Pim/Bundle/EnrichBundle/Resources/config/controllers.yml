@@ -1,0 +1,175 @@
+parameters:
+    pim_enrich.controller.attribute_group.class:      Pim\Bundle\EnrichBundle\Controller\AttributeGroupController
+    pim_enrich.controller.category_tree.class:        Pim\Bundle\EnrichBundle\Controller\CategoryTreeController
+    pim_enrich.controller.channel.class:              Pim\Bundle\EnrichBundle\Controller\ChannelController
+    pim_enrich.controller.currency.class:             Pim\Bundle\EnrichBundle\Controller\CurrencyController
+    pim_enrich.controller.family.class:               Pim\Bundle\EnrichBundle\Controller\FamilyController
+    pim_enrich.controller.locale.class:               Pim\Bundle\EnrichBundle\Controller\LocaleController
+    pim_enrich.controller.mass_edit_action.class:     Pim\Bundle\EnrichBundle\Controller\MassEditActionController
+    pim_enrich.controller.attribute.class:            Pim\Bundle\EnrichBundle\Controller\AttributeController
+    pim_enrich.controller.product.class:              Pim\Bundle\EnrichBundle\Controller\ProductController
+    pim_enrich.controller.association.class:          Pim\Bundle\EnrichBundle\Controller\AssociationController
+    pim_enrich.controller.group.class:                Pim\Bundle\EnrichBundle\Controller\GroupController
+    pim_enrich.controller.association_type.class:     Pim\Bundle\EnrichBundle\Controller\AssociationTypeController
+    pim_enrich.controller.media.class:                Pim\Bundle\EnrichBundle\Controller\MediaController
+    pim_enrich.controller.variant_group.class:        Pim\Bundle\EnrichBundle\Controller\VariantGroupController
+    pim_enrich.controller.group_type.class:           Pim\Bundle\EnrichBundle\Controller\GroupTypeController
+    pim_enrich.controller.completeness.class:         Pim\Bundle\EnrichBundle\Controller\CompletenessController
+
+services:
+    pim_enrich.controller.abstract:
+        abstract: true
+        arguments:
+            - '@request'
+            - '@templating'
+            - '@router'
+            - '@security.context'
+            - '@form.factory'
+            - '@validator'
+            - '@translator'
+
+    pim_enrich.controller.abstract_doctrine:
+        abstract: true
+        parent: pim_enrich.controller.abstract
+        arguments:
+            - '@pim_catalog.doctrine.smart_manager_registry'
+
+    pim_enrich.controller.attribute_group:
+        scope: request
+        class: %pim_enrich.controller.attribute_group.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_enrich.form.handler.attribute_group'
+            - '@pim_enrich.form.attribute_group'
+            - %pim_catalog.entity.attribute.class%
+
+    pim_enrich.controller.category_tree:
+        scope: request
+        class: %pim_enrich.controller.category_tree.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_catalog.manager.category'
+            - '@pim_user.context.user'
+
+    pim_enrich.controller.channel:
+        scope: request
+        class: %pim_enrich.controller.channel.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_enrich.form.handler.channel'
+            - '@pim_enrich.form.channel'
+
+    pim_enrich.controller.currency:
+        scope: request
+        class: %pim_enrich.controller.currency.class%
+        parent: pim_enrich.controller.abstract_doctrine
+
+    pim_enrich.controller.family:
+        scope: request
+        class: %pim_enrich.controller.family.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_catalog.manager.channel'
+            - '@pim_catalog.factory.family'
+            - '@pim_catalog.manager.completeness'
+            - '@pim_enrich.form.handler.family'
+            - '@pim_enrich.form.family'
+            - %pim_catalog.entity.attribute.class%
+
+    pim_enrich.controller.locale:
+        scope: request
+        class: %pim_enrich.controller.locale.class%
+        parent: pim_enrich.controller.abstract_doctrine
+
+    pim_enrich.controller.attribute:
+        scope: request
+        class: %pim_enrich.controller.attribute.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_enrich.form.handler.attribute'
+            - '@pim_enrich.form.attribute'
+            - '@pim_catalog.manager.attribute'
+            - '@pim_catalog.manager.locale'
+            - '@pim_versioning.manager.version'
+            - %akeneo_measure.measures_config%
+            - %pim_catalog.entity.attribute.class%
+
+    pim_enrich.controller.product:
+        scope: request
+        class: %pim_enrich.controller.product.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_catalog.manager.product'
+            - '@pim_catalog.manager.category'
+            - '@pim_user.context.user'
+            - '@pim_versioning.manager.version'
+            - '@oro_security.security_facade'
+            - '@pim_catalog.manager.product_category'
+
+    pim_enrich.controller.association:
+        class: %pim_enrich.controller.association.class%
+        arguments:
+            - '@doctrine'
+            - '@templating'
+            - '@pim_catalog.manager.product'
+
+    pim_enrich.controller.mass_edit_action:
+        scope: request
+        class: %pim_enrich.controller.mass_edit_action.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_enrich.mass_edit_action.operator'
+            - '@oro_datagrid.mass_action.parameters_parser'
+            - '@pim_datagrid.extension.mass_action.dispatcher'
+            - %mass_edit_limit%
+            - '@pim_catalog.repository.product'
+
+    pim_enrich.controller.group:
+        scope: request
+        class: %pim_enrich.controller.group.class%
+        parent: pim_enrich.controller.abstract
+        arguments:
+            - '@pim_catalog.manager.group'
+            - '@pim_enrich.form.handler.group'
+            - '@pim_enrich.form.group'
+
+    pim_enrich.controller.association_type:
+        scope: request
+        class: %pim_enrich.controller.association_type.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_catalog.manager.association'
+            - '@pim_enrich.form.handler.association_type'
+            - '@pim_enrich.form.association_type'
+
+    pim_enrich.controller.media:
+        scope: request
+        class: %pim_enrich.controller.media.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@liip_imagine'
+            - '@liip_imagine.filter.manager'
+            - '@liip_imagine.cache.manager'
+            - '@pim_catalog.repository.media'
+
+    pim_enrich.controller.variant_group:
+        scope: request
+        class: %pim_enrich.controller.variant_group.class%
+        parent: pim_enrich.controller.group
+
+    pim_enrich.controller.group_type:
+        scope: request
+        class: %pim_enrich.controller.group_type.class%
+        parent: pim_enrich.controller.abstract_doctrine
+        arguments:
+            - '@pim_enrich.form.handler.group_type'
+            - '@pim_enrich.form.group_type'
+
+    pim_enrich.controller.completeness:
+        class: %pim_enrich.controller.completeness.class%
+        arguments:
+            - '@pim_catalog.manager.completeness'
+            - '@pim_catalog.manager.product'
+            - '@pim_catalog.manager.channel'
+            - '@pim_user.context.user'
+            - '@templating'

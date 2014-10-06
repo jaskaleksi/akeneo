@@ -1,0 +1,9 @@
+parameters:
+    pim_connector_mapping.mapper.orm.class: Pim\Bundle\ConnectorMappingBundle\Mapper\ORMMapper
+
+services:
+    pim_connector_mapping.mapper.orm_product:
+        class: %pim_connector_mapping.mapper.orm.class%
+        arguments:
+            - '@pim_connector_mapping.manager.simple_mapping'
+            - 'product'

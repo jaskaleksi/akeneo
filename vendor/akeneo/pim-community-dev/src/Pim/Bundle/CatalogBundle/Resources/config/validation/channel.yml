@@ -1,0 +1,26 @@
+Pim\Bundle\CatalogBundle\Entity\Channel:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: code
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields:
+                - color
+            message: This color is already used by another channel
+        - Pim\Bundle\CatalogBundle\Validator\Constraints\Immutable:
+            properties:
+                - code
+    properties:
+        code:
+            - NotBlank: ~
+            - Regex:
+                pattern: /^[a-zA-Z0-9_]+$/
+                message: Channel code may contain only letters, numbers and underscores
+            - Length:
+                max: 100
+        label:
+            - NotBlank: ~
+            - Length:
+                max: 100
+        currencies:
+            - Count: { min: 1 }
+        locales:
+            - Count: { min: 1 }

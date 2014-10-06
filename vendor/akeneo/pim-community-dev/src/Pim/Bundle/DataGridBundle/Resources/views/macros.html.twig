@@ -1,0 +1,63 @@
+{% macro renderGrid(name, params = {}, renderParams = {}) %}
+    {% import 'OroDataGridBundle::macros.html.twig' as oroDataGrid %}
+    {{ oroDataGrid.renderGrid(name, params, renderParams) }}
+{% endmacro %}
+
+{#
+    Datagrid macro to load the grid asynchronously
+#}
+{% macro renderStatefulGrid(name, params = {}, renderParams = {}) %}
+    <div id="grid-{{ name }}" data-type="datagrid" {% if renderParams.cssClass is defined %} class="{{ renderParams.cssClass }}" {% endif %}></div>
+    <script type="text/javascript">
+        require(
+            ['jquery', 'routing', 'oro/datagrid-builder', 'oro/pageable-collection', 'pim/datagrid/state'],
+            function ($, Routing, datagridBuilder, PageableCollection, DatagridState) {
+                'use strict';
+                $(function() {
+                    var urlParams = {{ params|json_encode|raw }};
+                    urlParams.alias = '{{ name }}';
+                    urlParams.params = {{ params|json_encode|raw }};
+
+                    var state = DatagridState.get('{{ name }}', ['view', 'filters', 'columns']);
+
+                    if (state.view) {
+                        urlParams['{{ name }}[_parameters][view][id]'] = state.view;
+                    }
+
+                    if (state.filters) {
+                        var collection = new PageableCollection();
+                        var filters = collection.decodeStateData(state.filters);
+                        collection.processFiltersParams(urlParams, filters, '{{ name }}[_filter]');
+                    }
+
+                    if (state.columns) {
+                        urlParams['{{ name }}[_parameters][view][columns]'] = state.columns;
+                    }
+
+                    $.get(Routing.generate('pim_datagrid_load', urlParams), function(resp) {
+                        if (state.columns) {
+                            resp.metadata.state.parameters = _.extend({}, resp.metadata.state.parameters, { view: { columns: state.columns }});
+                        }
+                        $('#grid-{{ name }}').data({ 'metadata': resp.metadata, 'data': JSON.parse(resp.data) });
+
+                        var modules = resp.metadata.requireJSModules;
+                        modules.push('pim/datagrid/state-listener');
+                        require(modules, function () {
+                            var builders = _.toArray(arguments);
+                            $(function () {
+                                datagridBuilder(builders);
+                            });
+                        });
+                    });
+                });
+            }
+        );
+    </script>
+{% endmacro %}
+
+{#
+    Datagrid macro to render entity history grid
+#}
+{% macro renderHistoryGrid(entity) %}
+    {{ _self.renderGrid('history-grid', { object_class: entity|class, object_id: entity.id }) }}
+{% endmacro %}

@@ -1,0 +1,5 @@
+extensions:
+    - PhpSpec\Extension\CodeCoverageExtension
+code_coverage:
+    show_uncovered_files: true
+    output: build/coverage

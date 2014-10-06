@@ -1,0 +1,5 @@
+# Please do not remove placeholder, to keep the listener getting registered
+doctrine:
+    orm:
+        resolve_target_entities:
+            placeholder: placeholder

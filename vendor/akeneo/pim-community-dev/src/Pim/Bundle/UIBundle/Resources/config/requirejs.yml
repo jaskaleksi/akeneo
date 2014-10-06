@@ -1,0 +1,30 @@
+config:
+    shim:
+        jquery-ui-full:
+            deps:
+                - jquery
+        jquery.slimbox:
+            deps:
+                - jquery
+        bootstrap.bootstrapswitch:
+            deps:
+                - jquery
+        jquery.sidebarize:
+            deps:
+                - jquery
+
+    paths:
+        jquery-ui-full:            pimui/lib/jquery/jquery-ui-1.10.3.custom.min
+        jquery.slimbox:            pimui/js/slimbox2
+        bootstrap.bootstrapswitch: oroui/lib/bootstrap/js/bootstrap.switch
+        tinymce:                   pimui/lib/tinymce/tinymce.min
+        wysiwyg:                   pimui/js/pim-wysiwyg
+        datepicker:                pimui/js/pim-datepicker
+        jquery.sidebarize:         pimui/js/jquery.sidebarize
+        pim/ui:                    pimui/js/pim-ui
+        pim/initselect2:           pimui/js/pim-initselect2
+        pim/dialog:                pimui/js/pim-dialog
+        pim/formupdatelistener:    pimui/js/pim-formupdatelistener
+        pim/saveformstate:         pimui/js/pim-saveformstate
+        pim/fileinput:             pimui/js/pim-fileinput
+        pim/dialogform:            pimui/js/pim-dialogform

@@ -1,0 +1,47 @@
+parameters:
+    pim_base_connector.writer.doctrine.product.class: Pim\Bundle\BaseConnectorBundle\Writer\Doctrine\ProductWriter
+    pim_base_connector.writer.doctrine.class: Pim\Bundle\BaseConnectorBundle\Writer\Doctrine\Writer
+    pim_base_connector.writer.doctrine.category.class: Pim\Bundle\BaseConnectorBundle\Writer\Doctrine\CategoryWriter
+
+    pim_base_connector.writer.file.class: Pim\Bundle\BaseConnectorBundle\Writer\File\FileWriter
+    pim_base_connector.writer.file.product.class: Pim\Bundle\BaseConnectorBundle\Writer\File\ProductWriter
+
+    pim_base_connector.writer.dummy.class: Pim\Bundle\BaseConnectorBundle\Writer\DummyWriter
+
+services:
+    pim_base_connector.writer.file:
+        class: %pim_base_connector.writer.file.class%
+
+    pim_base_connector.writer.product_file:
+        parent: pim_base_connector.writer.file
+        class: %pim_base_connector.writer.file.product.class%
+        arguments:
+            - '@pim_catalog.manager.media'
+
+    pim_base_connector.writer.dummy:
+        class: %pim_base_connector.writer.dummy.class%
+
+    pim_base_connector.writer.doctrine.product:
+        class: %pim_base_connector.writer.doctrine.product.class%
+        arguments:
+            - '@pim_catalog.manager.product'
+            - '@pim_transform.cache.doctrine_cache'
+            - '@pim_versioning.manager.version'
+        calls:
+            - [ addNonClearableEntity, [ %pim_catalog.entity.attribute.class% ] ]
+
+    pim_base_connector.writer.doctrine.category:
+        class: %pim_base_connector.writer.doctrine.category.class%
+        arguments:
+            - '@pim_catalog.doctrine.smart_manager_registry'
+
+    pim_base_connector.writer.doctrine:
+        class: %pim_base_connector.writer.doctrine.class%
+        arguments:
+            - '@pim_catalog.doctrine.smart_manager_registry'
+
+    pim_base_connector.writer.doctrine.association_type: '@pim_base_connector.writer.doctrine'
+    pim_base_connector.writer.doctrine.group: '@pim_base_connector.writer.doctrine'
+    pim_base_connector.writer.doctrine.attribute: '@pim_base_connector.writer.doctrine'
+    pim_base_connector.writer.doctrine.attribute_option: '@pim_base_connector.writer.doctrine'
+    pim_base_connector.writer.doctrine.association: '@pim_base_connector.writer.doctrine'

@@ -1,0 +1,51 @@
+parameters:
+    pim_catalog.doctrine.smart_manager_registry.class:             Pim\Bundle\CatalogBundle\Doctrine\SmartManagerRegistry
+
+services:
+    # Validators
+    pim_catalog.form.validator.metric:
+        class: Pim\Bundle\CatalogBundle\Validator\Constraints\ValidMetricValidator
+        arguments:
+            - '@property_accessor'
+            - %akeneo_measure.measures_config%
+        tags:
+            - { name: validator.constraint_validator, alias: pim_metric_validator }
+
+    pim_catalog.form.validator.single_identifier_attribute:
+        class: Pim\Bundle\CatalogBundle\Validator\Constraints\SingleIdentifierAttributeValidator
+        arguments:
+            - '@pim_catalog.manager.product'
+        tags:
+            - { name: validator.constraint_validator, alias: pim_single_identifier_attribute_validator }
+
+    pim_catalog.form.validator.unique_variant_axis:
+        class: Pim\Bundle\CatalogBundle\Validator\Constraints\UniqueVariantAxisValidator
+        arguments:
+            - '@pim_catalog.manager.product'
+        tags:
+            - { name: validator.constraint_validator, alias: pim_unique_variant_axis_validator }
+
+    pim_catalog.validator.constraints.unique_value:
+        class: Pim\Bundle\CatalogBundle\Validator\Constraints\UniqueValueValidator
+        arguments:
+            - '@pim_catalog.manager.product'
+        tags:
+            - { name: validator.constraint_validator, alias: pim_unique_value_validator }
+
+    pim_catalog.validator.immutable:
+        class: Pim\Bundle\CatalogBundle\Validator\Constraints\ImmutableValidator
+        arguments:
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - { name: validator.constraint_validator, alias: pim_immutable_validator }
+
+    # Locale helper
+    pim_catalog.helper.locale:
+        class: Pim\Bundle\CatalogBundle\Helper\LocaleHelper
+        arguments:
+            - '@pim_user.context.user'
+
+    pim_catalog.doctrine.smart_manager_registry:
+        class: %pim_catalog.doctrine.smart_manager_registry.class%
+        calls:
+            - [addRegistry, ['@doctrine']]

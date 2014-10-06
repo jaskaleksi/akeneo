@@ -1,0 +1,173 @@
+{% extends bap.layout %}
+{% import 'OroUIBundle::macros.html.twig' as UI %}
+{% import 'PimUIBundle:Default:page_elements.html.twig' as elements %}
+
+{% set fullname = form.vars.value|oro_format_name|default('N/A') %}
+{% oro_title_set({params : {"%username%": fullname }}) %}
+{% set title = form.vars.value.id ? 'Edit user'|trans ~ ' - ' ~ fullname : 'New user'|trans %}
+{% if editRoute %}
+    {% set formAction = path(editRoute) %}
+{% else %}
+    {% set formAction = form.vars.value.id ? path('oro_user_update', { id: form.vars.value.id}) : path('oro_user_create') %}
+{% endif %}
+
+{% block head_script %}
+    {# TODO: Find a better way to handle such dependencies in https://magecore.atlassian.net/browse/BAP-1971 #}
+    {% include 'OroUIBundle:Js:jquery_jstree.config.js.twig' %}
+    <script type="text/javascript">
+        require(['jquery', 'pim/initselect2', 'datepicker', 'jquery.jstree', 'jstree/jquery.hotkeys'],
+        function ($, initSelect2, datepicker) {
+            $(function() {
+                $('.navbar-content.pull-left').css('width', '80%')
+
+                $('#business_units_tree').jstree({
+                    "checkbox": {
+                        real_checkboxes: true,
+                        real_checkboxes_names: function (n) {
+                            return ['businessUnits[' + n.data('id') + ']', 1]
+                        },
+                        two_state: true
+                    }
+                });
+
+                $('#{{ form.vars.id }}').find('select').addClass('select2');
+                initSelect2.init($('#{{ form.vars.id }}'));
+
+                _.each($('#{{ form.vars.id }} input.datepicker:not(.hasPicker)'), function (field) {
+                    datepicker.init(field.getAttribute('id'));
+                });
+
+                {% if form.rolesCollection is defined %}
+                    var $roles = $('#{{ form.rolesCollection.vars.id }}');
+
+                    var checkRoles = function() {
+                        if ($roles.find('input:checked').length) {
+                            $('a[href="#groups-and-roles"]').removeClass('error');
+                            $roles.parent().removeClass('validation-error');
+                        } else {
+                            $('a[href="#groups-and-roles"]').addClass('error');
+                            $roles.addClass('error').parent().addClass('validation-error');
+                        }
+                    };
+
+                    $roles.on('change', 'input', checkRoles);
+
+                    checkRoles();
+                {% endif %}
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block page_container %}
+{% block content %}
+    {{ JSFV(form) }}
+    {{ form_start(form, {
+        'action': formAction,
+        'attr': {
+            'data-updated-title': 'confirmation.leave'|trans,
+            'data-updated-message': 'confirmation.discard changes'|trans({ '%entity%': 'user.title'|trans })
+        }
+    }) }}
+
+        {% set buttons %}
+            {{ elements.backLink(path('oro_user_index')) }}
+            {% if form.vars.value.id and form.vars.value.id != app.user.id %}
+                {{ elements.deleteLink(
+                    path('oro_api_delete_user', {'id': form.vars.value.id}),
+                    'oro_user_user_delete',
+                    path('oro_user_index'),
+                    'confirmation.remove.user'|trans({ '%name%': fullname }),
+                    'flash.user.removed'|trans
+                ) }}
+            {% endif %}
+            {{ elements.submitBtn }}
+        {% endset %}
+
+        {% set left %}
+            {% if form.vars.value.id %}
+                <div class="customer-info well-small">
+                    <div class="visual">
+                        <img src="{{ form.vars.value.imagePath ? form.vars.value.imagePath | imagine_filter('avatar_med') : asset('bundles/oroui/img/info-user.png') }}" alt="{{ fullname }}"/>
+                    </div>
+                </div>
+                <ul class="inline">
+                    <li>{{ 'Created'|trans }}: {{ form.vars.value.createdAt ? form.vars.value.createdAt|oro_format_datetime : 'N/A' }}</li>
+                    <li>{{ 'Updated'|trans }}: {{ form.vars.value.updatedAt ? form.vars.value.updatedAt|oro_format_datetime : 'N/A' }}</li>
+                    <li>{{ 'Last logged in'|trans }}: {{ form.vars.value.lastLogin ? form.vars.value.lastLogin|oro_format_datetime : 'N/A' }}</li>
+                    <li>{{ 'Login count'|trans }}: {{ form.vars.value.loginCount|default(0) }}</li>
+                </ul>
+            {% endif %}
+        {% endset %}
+
+        {{ elements.page_header(title, buttons, null, left, elements.updated(form.vars.id)) }}
+
+        {% set tabs = ['General'] %}
+
+        {% set tabs = tabs|merge(['Additional']) %}
+
+        {% if form.groups is defined or form.rolesCollection is defined %}
+            {% set tabs = tabs|merge(['Groups and Roles']) %}
+        {% endif %}
+
+        {% if form.change_password is defined %}
+            {% set tabs = tabs|merge(['Password']) %}
+        {% endif %}
+
+        {% set tabs = tabs|merge(['Business Units', 'Email synchronization settings']) %}
+
+        {{ elements.form_navbar(tabs) }}
+
+        <div class="row-fluid tab-content buffer-top">
+
+            {{ elements.form_errors(form) }}
+
+            <div class="tab-pane active" id="general">
+                {{ form_row(form.enabled) }}
+                {{ form_row(form.username) }}
+                {{ form.plainPassword is defined ? form_row(form.plainPassword) : '' }}
+                {{ form_row(form.namePrefix) }}
+                {{ form_row(form.firstName) }}
+                {{ form_row(form.middleName) }}
+                {{ form_row(form.lastName) }}
+                {{ form_row(form.nameSuffix) }}
+                {{ form_row(form.birthday) }}
+                {{ form_row(form.imageFile) }}
+                {{ form_row(form.owner) }}
+                {{ form_row(form.email) }}
+                {{ UI.collectionField(form.emails, 'Additional emails'|trans, 'Add another email'|trans) }}
+            </div>
+
+            <div class="tab-pane" id="additional">
+                {{ form_row(form.catalogLocale) }}
+                {{ form_row(form.catalogScope) }}
+                {{ form_row(form.defaultTree) }}
+            </div>
+
+            {% if form.groups is defined or form.rolesCollection is defined %}
+                <div class="tab-pane" id="groups-and-roles">
+                    {{ form.groups is defined ? form_row(form.groups, { attr: { class: 'horizontal' } }) : '' }}
+                    {{ form.rolesCollection is defined ? form_row(form.rolesCollection, { attr: { class: 'horizontal' } }) : '' }}
+                </div>
+            {% endif %}
+
+            {% if form.change_password is defined %}
+                <div class="tab-pane" id="password">
+                    {{ form_widget(form.change_password) }}
+                </div>
+            {% endif %}
+
+            <div class="tab-pane" id="business-units">
+                <div id="business_units_tree">
+                    {% include 'OroOrganizationBundle:BusinessUnit:businessUnitsTree.html.twig' with {'businessUnits': businessUnits, 'hasId': form.vars.value.id ? true : false} %}
+                </div>
+            </div>
+
+            <div class="tab-pane" id="email-synchronization-settings">
+                {{ form_widget(form.imapConfiguration) }}
+            </div>
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}
+{% endblock %}

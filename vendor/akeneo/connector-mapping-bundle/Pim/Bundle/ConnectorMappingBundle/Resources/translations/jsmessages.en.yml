@@ -1,0 +1,4 @@
+pim_connector_mapping_bundle:
+    mapping:
+        add: Add
+        not_blank: This field is required

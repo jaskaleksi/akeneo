@@ -1,0 +1,319 @@
+@import 'mixins';
+@import 'variables';
+@import 'icons';
+@import 'header';
+@import 'form';
+@import 'wizard';
+@import 'tinymce';
+
+/* General **********************************************************************************************************/
+
+body {
+  color: @textColor;
+  background-color: @backgroundColor-white;
+}
+
+a {
+  color: @color-purple_dark;
+}
+a:hover,
+a:focus {
+  color: darken(@color-purple_dark, 5%);
+}
+
+/* Grids */
+.table-hover tbody tr:hover > td {
+  background-color: @color-purple_hover;
+}
+table.grid {
+  margin-bottom: 20px;
+}
+.grid-container {
+  overflow: visible;
+}
+.filter-box {
+  select.filter-select-oro {
+    width: 100px;
+    padding-right: 0;
+  }
+  .btn-group {
+    float: none;
+  }
+  .filter-item .choicefilter .input-append input {
+    margin-right: 0;
+  }
+}
+
+.ui-multiselect-menu.select-filter-widget .ui-multiselect-checkboxes label {
+  &.ui-state-hover, &.ui-state-active {
+    background-color: @color-purple_light;
+  }
+}
+
+.filter-criteria .dropdown-menu li {
+  > a,
+  &.active > a {
+    &:hover, &:focus, &:active {
+      background: @color-purple_light;
+    }
+  }
+  &.active > a {
+    background: @textColor + #777;
+  }
+}
+
+.dropdown-menu>li>a, .dropdown-menu>li.active>a {
+  color: @color-purple_light;
+  &:hover, &:active {
+    color: darken(@color-purple_light, 5%);
+  }
+}
+
+.btn-group>.dropdown-menu li {
+  a:hover {
+    background: @color-purple_light;
+  }
+  &.disabled a {
+    color: @textColor + #555;
+    background: @backgroundColor-white;
+  }
+}
+
+/* Tree */
+.jstree-default {
+  height: 100%;
+  overflow: auto;
+}
+
+.jstree-root > a > .jstree-checkbox {
+  display: none;
+}
+
+#tree_toolbar {
+  display: block;
+  padding: 16px 20px 16px 20px;
+  margin-bottom: 10px;
+  background: #efefef url("../../oroui/img/bg-gray-box.png") repeat-x;
+  border: solid #ccc;
+  border-width: 1px 0;
+}
+
+#nested_switch {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  background: #efefef url("../../oroui/img/bg-gray-box.png") repeat-x;
+  border: solid #ccc;
+  border-width: 1px 0;
+  .has-switch {
+    margin: 5px;
+  }
+  label.control-label {
+    padding-top: 9px;
+    padding-left: 9px;
+  }
+}
+
+a.back-link i {
+  vertical-align: middle;
+}
+
+.icon-collapse-alt, .icon-expand-alt {
+  font-size: 14px;
+}
+
+.btn.scope-filter {
+  height: @buttonHeight;
+  min-width: 130px;
+  padding-right: 0;
+  padding-left: 5px;
+}
+
+/** Dashboard ********************************************************************************************************/
+.dashboard {
+  background-color:#f1f1f1;
+  &.quick-launchpad > .container {
+    padding-top: 30px;
+  }
+  .quick-launchpad-widget {
+    margin-bottom: 20px;
+    &>div.clearfix {
+      overflow: hidden;
+      border: 1px solid #b6b6b6;
+      background-color: lighten(@color-light_grey, 4%);
+      .border-radius(5px);
+      .box-shadow(1px 1px 5px rgba(50, 50, 50, 0.2));
+    }
+  }
+  .btn.shortcut {
+    height: 100px;
+    width: 25%;
+    padding-top: 5px;
+  }
+  .big-icon {
+    font-size: 2.5em;
+    padding-top: 15px;
+  }
+  h3 {
+    margin: 0;
+  }
+  &.header {
+    background-color: #fff;
+    padding: 5px 20px;
+    border-bottom: 1px solid #f7f7f7;
+  }
+}
+
+/** widgets **********************************************************************************************************/
+.widget-header {
+  padding: 2px 10px;
+  font-weight: bold;
+  background: linear-gradient(@backgroundColor-white, @color-light_grey);
+  border-bottom: 1px solid #ccc;
+}
+
+a[data-toggle-channel] {
+  padding: 5px;
+  color: @textColor;
+}
+
+#completeness-widget {
+  .progress {
+    height: 10px;
+    margin-bottom: 5px;
+    background-image: linear-gradient(to bottom, #e4e4e4, #eee);
+    border-radius: 6px;
+  }
+  .progress-cell {
+    padding: 10px 10px 0 10px;
+    margin-right: 15px;
+    margin-left: 15px;
+    div.center {
+      text-align: center;
+    }
+    span.progress-info {
+      padding: 5px;
+      color: #5e8dcb;
+      cursor: default;
+    }
+    small {
+      display: block;
+      text-align: right;
+    }
+  }
+  tr.channel {
+    &.first {
+      border-top: none;
+    }
+    border-top: 1px solid #c2c2c2;
+    border-bottom: 1px solid #c2c2c2;
+    background: linear-gradient(#f2f2f2, #e8e8e8);
+    td {
+      padding: 2px 5px;
+    }
+  }
+  td {
+    padding: 5px;
+    font-size: 13px;
+    vertical-align: top;
+  }
+  td:nth-child(1) {
+    width: 5%;
+  }
+  td:nth-child(2) {
+    width: 30%;
+  }
+  td:nth-child(3) {
+    width: 5%;
+  }
+  td:nth-child(4) {
+    width: 60%;
+  }
+}
+
+.error-widget {
+  [class^="icon-"] {
+    font-size: 6em;
+    color: darken(@color-grey_tab, 25%);
+  }
+  p {
+    text-align: center;
+  }
+}
+
+/** jstree ***********************************************************************************************************/
+.jstree.jstree-default {
+  .jstree-hovered {
+    background: @color-purple_hover;
+    border: 1px solid @color-purple_hover;
+  }
+  .jstree-clicked {
+    background: darken(@color-purple_hover, 5%);
+    border: 1px solid darken(@color-purple_hover, 5%);
+  }
+
+  li.jstree-open > a:not(.jstree-loading) .jstree-icon {
+    background:url("jstree/folder_standard_opened.png") 0 0 no-repeat;
+  }
+  li.jstree-closed > a:not(.jstree-loading) .jstree-icon {
+    background:url("jstree/folder_standard_closed.png") 0 0 no-repeat;
+  }
+  li.jstree-leaf > a:not(.jstree-loading) .jstree-icon {
+    background:url("jstree/folder_leaf.png") 0 0 no-repeat;
+  }
+  li.jstree-unclassified > a:not(.jstree-loading) .jstree-icon {
+    background:url("jstree/folder_unclassified.png") 0 0 no-repeat;
+  }
+}
+
+.configuration {
+  width: 100%;
+  margin-bottom: 20px;
+  thead td {
+    padding: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background: @color-purple_hover;
+  }
+  tbody {
+    td {
+      padding: 5px 10px;
+    }
+    tr td:first-child {
+      width: 200px;
+    }
+  }
+}
+
+.accordion-inner-unbuffered {
+  padding: 0;
+  border-top: 1px solid #e5e5e5;
+}
+
+tr.warning, tr.error {
+  .title {
+    font-weight: bold;
+    color: @textColor;
+  }
+}
+
+ul.inline .tooltip-inner {
+    text-align: left;
+}
+
+span.link-label {
+  padding-right: 8px;
+  padding-left: 8px;
+  margin-right: 5px;
+  font-size: 11px;
+  line-height: 24px;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.btn-mini {
+  padding: 0 6px;
+}

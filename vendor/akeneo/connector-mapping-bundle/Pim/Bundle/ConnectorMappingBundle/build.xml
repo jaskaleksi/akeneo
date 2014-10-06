@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="connector-mapping" default="build">
+    <property environment="dev"/>
+    <property name="Connector mapping bundle" value="${env.JOB_NAME}" />
+
+    <target name="build" depends="prepare,composer,vendors,phpspec-coverage,phploc,pdepend,phpcs-ci"/>
+
+    <target name="clean" description="Cleanup build artifacts">
+        <delete dir="${basedir}/build/api"/>
+        <delete dir="${basedir}/build/code-browser"/>
+        <delete dir="${basedir}/build/coverage"/>
+        <delete dir="${basedir}/build/coverage-parts"/>
+        <delete dir="${basedir}/build/logs"/>
+        <delete dir="${basedir}/build/pdepend"/>
+
+        <delete file="${basedir}/composer.phar" />
+    </target>
+
+    <target name="prepare" depends="clean" description="Prepare for build">
+        <mkdir dir="${basedir}/build/api"/>
+        <mkdir dir="${basedir}/build/code-browser"/>
+        <mkdir dir="${basedir}/build/coverage"/>
+        <mkdir dir="${basedir}/build/coverage-parts"/>
+        <mkdir dir="${basedir}/build/logs"/>
+        <mkdir dir="${basedir}/build/logs/behat"/>
+        <mkdir dir="${basedir}/build/logs/behat-pr"/>
+        <mkdir dir="${basedir}/build/logs/behat-coverage"/>
+        <mkdir dir="${basedir}/build/pdepend"/>
+        <mkdir dir="${basedir}/build/phpdox"/>
+    </target>
+
+    <target name="lint" description="Perform syntax check of sourcecode files">
+        <apply executable="php" failonerror="true">
+            <arg value="-l" />
+
+            <fileset dir="${basedir}/">
+                <include name="**/*.php" />
+                <modified />
+            </fileset>
+        </apply>
+    </target>
+
+    <target name="phploc" description="Measure project size using PHPLOC">
+        <exec executable="phploc">
+            <arg path="${basedir}/" />
+            <arg value="--log-csv" />
+            <arg value="${basedir}/build/logs/phploc.csv" />
+            <arg value="--exclude=vendor,bin,spec" />
+        </exec>
+    </target>
+
+    <target name="pdepend" description="Calculate software metrics using PHP_Depend">
+        <exec executable="pdepend">
+            <arg value="--jdepend-xml=${basedir}/build/logs/jdepend.xml" />
+            <arg value="--jdepend-chart=${basedir}/build/pdepend/dependencies.svg" />
+            <arg value="--overview-pyramid=${basedir}/build/pdepend/overview-pyramid.svg" />
+            <arg value="--ignore=Tests,vendor,spec" />
+            <arg path="${basedir}/" />
+        </exec>
+    </target>
+
+    <target name="phpmd" description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
+        <exec executable="${basedir}/app/Resources/jenkins/phpmd_akeneo">
+            <arg path="${basedir}/" />
+            <arg value="text" />
+        </exec>
+    </target>
+
+    <target name="phpmd-ci" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
+        <exec executable="${basedir}/Resources/jenkins/phpmd_akeneo">
+            <arg path="${basedir}/" />
+            <arg value="xml" />
+            <arg value="--reportfile" />
+            <arg value="${basedir}/build/logs/pmd.xml" />
+        </exec>
+    </target>
+
+    <target name="phpdoc" description="Check php documentation">
+        <exec executable="phpdoc">
+            <arg line="--directory ${basedir}/src" />
+            <arg line="--target ${basedir}/build/api" />
+            <arg line="--template checkstyle" />
+        </exec>
+    </target>
+
+    <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
+        <exec executable="phpcs" output="/dev/null">
+            <arg value="--report=checkstyle" />
+            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml" />
+            <arg value="--standard=PSR2" />
+            <arg value="--extensions=php" />
+            <arg value="--ignore=vendor,bin,coverage,spec" />
+            <arg path="${basedir}/" />
+        </exec>
+    </target>
+
+    <target name="phpcpd" description="Find duplicate code using PHPCPD">
+        <exec executable="phpcpd">
+            <arg value="--exclude=vendor" />
+            <arg value="--exclude=spec" />
+            <arg value="--log-pmd" />
+            <arg value="${basedir}/build/logs/pmd-cpd.xml" />
+            <arg path="${basedir}/" />
+        </exec>
+    </target>
+
+    <target name="phpspec" description="Run specs with PhpSpec">
+        <exec executable="bin/phpspec" failonerror="true">
+            <arg value="run" />
+            <arg value="--ansi" />
+            <arg value="-fpretty" />
+            <arg value="--no-interaction" />
+            <arg value="--verbose" />
+        </exec>
+    </target>
+
+    <target name="phpspec-coverage" description="Run specs with Php spec and generate coverage">
+        <exec executable="sh" outputproperty="xdebug_path">
+            <arg value="-c" />
+            <arg value="php -i | grep ^extension_dir | cut -d ' ' -f3"/>
+        </exec>
+        <exec executable="php">
+            <arg value="-d zend_extension=${xdebug_path}/xdebug.so" />
+            <arg value="./bin/phpspec" />
+            <arg value="run" />
+            <arg value="--ansi" />
+            <arg value="-fpretty" />
+            <arg value="--no-interaction" />
+            <arg value="--verbose" />
+        </exec>
+    </target>
+
+    <target name="composer" description="Install composer.phar">
+        <exec executable="bash">
+            <arg value="-c"/>
+            <arg value="curl -s http://getcomposer.org/installer | php"/>
+        </exec>
+    </target>
+
+    <target name="vendors" description="Install vendors">
+        <exec executable="${basedir}/composer.phar" failonerror="true">
+            <arg value="install" />
+            <arg value="--no-progress" />
+            <arg value="--prefer-dist" />
+            <arg value="--optimize-autoloader" />
+        </exec>
+    </target>
+</project>
